@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>trial.js</title>
+		<link rel="stylesheet" href="dist/reset.css" />
+		<link rel="stylesheet" href="dist/reveal.css" />
+		<link rel="stylesheet" href="dist/theme/serif.css" />
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css" />
+		<style>
+			@keyframes lineGrow {
+				0%,
+				20% {
+					height: 0;
+				}
+				40%,
+				100% {
+					height: 50px;
+				}
+			}
+
+			@keyframes arrowAppear {
+				0%,
+				40% {
+					opacity: 0;
+					transform: translateY(-15px) translateX(-50%);
+				}
+				60%,
+				100% {
+					opacity: 1;
+					transform: translateY(0) translateX(-50%);
+				}
+			}
+
+			@keyframes dissolve {
+				0%,
+				60% {
+					opacity: 1;
+				}
+				80%,
+				100% {
+					opacity: 0;
+				}
+			}
+
+			.arrow {
+				display: inline-block;
+				position: relative;
+				padding-bottom: 10px;
+			}
+
+			.line {
+				width: 2px;
+				height: 50px;
+				background-color: black;
+				/* animation: lineGrow 10s ease infinite, dissolve 10s ease infinite; */
+			}
+
+			.arrow-head {
+				width: 0;
+				height: 0;
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				border-top: 15px solid black;
+				/* opacity: 0; */
+				position: absolute;
+				left: 50%;
+				transform: translateX(
+					-50%
+				); /* animation: arrowAppear 10s ease infinite, dissolve 10s ease infinite; */
+			}
+			.gridContainer {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(3, 1fr);
+				gap: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<div class="gridContainer">
+						<div
+							style="
+								grid-column-start: 2;
+								grid-row-start: 1;
+								grid-row-end: 3;
+								background-color: beige;
+							"
+						>
+							<h2
+								style="
+									font-family: Cambria, Cochin, Georgia, Times,
+										'Times New Roman', serif;
+								"
+							>
+								O.M Genius
+							</h2>
+							<p>Elegance encounters utility</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<section>
+						<div style="background-color: beige; margin-left: 10em">
+							<h2>Everything in one place</h2>
+							<p>
+								<q style="margin: 1px"
+									>Simplicity is the ultimate sophistication</q
+								>
+							</p>
+
+							<div class="arrow">
+								<div class="line"></div>
+								<div class="arrow-head"></div>
+							</div>
+						</div>
+					</section>
+					<!-- data-background-gradient="linear-gradient(to bottom left, beige 50%, transparent 50%)" -->
+					<section>
+						<div
+							style="
+								height: 500px;
+								display: flex;
+								justify-content: space-around;
+							"
+						>
+							<iframe
+								style="border-radius: 15px; box-shadow: 5px 10px 10px gray"
+								data-src="https://onedrive.live.com/embed?resid=4E823CBD7B101EBE%211518&authkey=%21AOUbbWDNIlkogQk&em=2&AllowTyping=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&resen=false&ed1JS=false"
+								frameborder="0"
+								data-preload
+							></iframe>
+							<iframe
+								style="border-radius: 15px; box-shadow: 5px 10px 10px gray"
+								data-src="https://www.youtube.com/"
+								frameborder="0"
+								data-preload
+							></iframe>
+							<iframe
+								data-src="https://smplr.me/yHWSgbe"
+								frameborder="0"
+								data-preload=""
+							></iframe>
+						</div>
+						<div>
+							<iframe
+								style="
+									width: 100%;
+									border-radius: 15px;
+									box-shadow: 5px 10px 10px gray;
+								"
+								data-src="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
+								frameborder="0"
+								data-preload
+							></iframe>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<div style="background-color: beige; width: 100%; height: 100%">
+							<h3>Choose your focus</h3>
+							<div class="arrow">
+								<div class="line"></div>
+								<div class="arrow-head"></div>
+							</div>
+						</div>
+					</section>
+					<section
+						data-preload
+						data-background-iframe="https://onedrive.live.com/embed?resid=4E823CBD7B101EBE%211518&authkey=%21AOUbbWDNIlkogQk&em=2&AllowTyping=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&resen=false&ed1JS=false"
+						data-background-interactive
+					></section>
+					<section
+						data-preload
+						data-background-iframe="https://www.youtube.com/"
+						data-background-interactive
+					></section>
+					<section
+						data-preload
+						data-background-iframe="https://smplr.me/yHWSgbe"
+						data-background-interactive
+					></section>
+					<section
+						data-preload
+						data-background-iframe="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
+						data-background-interactive
+					></section>
+				</section>
+				<section>5</section>
+			</div>
+		</div>
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				parallaxBackgroundImage:
+					"https://th.bing.com/th/id/OIG.XnUvLJXYih1Wbq6gpAdX?pid=ImgGn",
+				parallaxBackgroundSize: "2000px 2000px",
+				parallaxBackgroundHorizontal: 25,
+				parallaxBackgroundVertical: 10,
+				progress: false,
+
+				disableLayout: true,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			});
+		</script>
+	</body>
+</html>

@@ -100,5 +100,8 @@
       "no-eq-null": 2,
       "no-unused-expressions": 0
     }
+  },
+  "dependencies": {
+    "reveal.js-symbol-per-slide-progress": "^1.0.0"
   }
 }
