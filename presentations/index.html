@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+		/>
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="../dist/reset.css" />
+		<link rel="stylesheet" href="../dist/reveal.css" />
+		<link rel="stylesheet" href="../dist/theme/black.css" />
+
+		<!-- Theme used for syntax highlighted code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+
+		<style>
+			.flex-container {
+				display: flex;
+				
+				
+			}
+			
+
+			.vertical-line {
+				border-left: 10px solid white;
+				height: 4em;
+				box-sizing: border-box;
+				margin: 1em;
+			}
+			.inline-container {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+			}
+    
+   /*  .table-container{
+    width: 300px !important;
+	overflow-x: scroll;
+	  
+    }
+    .table-header{
+    font-size: 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	
+    }
+    .table-body{
+		font-size: 10px;
+    
+    }
+   
+			tr:nth-child(even) {
+				background-color: hsl(180, 100%, 50%, 0.4);
+			}
+      
+			tr > td:not(:last-child) {
+				box-shadow: 5px 0px 5px -3px gray;
+			}
+      tr th:not(:last-child) {
+        box-shadow: 5px 0px 5px -3px gray;
+      }
+    
+      tr td, th{
+        text-align: center !important;
+      } */
+     
+			/* .expandable {
+				font-size: 10px;
+        
+			}
+			.expanded {
+				font-size: 20px;
+     
+        
+			} */
+
+			.slide-menu {
+				position: fixed;
+				left: 0;
+				top: 0;
+				z-index: 2;
+				width: 100%;
+				background-color: hsla(180, 9%, 25%, 0.4);
+				border-radius: 15px;
+			}
+			.slide-menu ul {
+				display: flex;
+
+				justify-content: space-around;
+
+				list-style: none;
+			}
+			.slide-menu ul li {
+				font-size: 15px;
+				cursor: pointer;
+      
+			}
+      .slide-menu ul li:hover{
+        color:wheat;
+      }
+			.slide-menu ul li ul {
+				display: none;
+			
+			}
+      .slide-menu ul li:hover ul{
+        display: block;
+      }
+	  .table-container{
+display: flex;
+/* max-width: 300px;
+overflow: scroll; */
+	  }
+	  .table{
+		display: table;
+		border-collapse: collapse;
+		background-color:blue ;
+		
+	  }
+	 /*  .tableHead{ */
+	/* 	position: fixed; */
+		
+		
+	/*   } */
+	  .row{
+		display: table-row;
+		
+	  }
+	  .cell{
+		display: table-cell;
+		padding: 0.5px;
+		border-bottom: 1px solid black;
+		box-shadow: 5px 0px 5px -3px gray;
+		 transition: width 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+		
+		
+
+	  }
+	  .column .cell{
+		display: flex;
+		flex-direction: column;
+		
+	  }
+	  .column:hover   {
+		z-index: 2;
+	 transform-origin: left;
+  		transform: scale(1.5);
+		
+	
+	  }
+	  .column:hover .cell{
+		
+		background-color: black;
+		
+		
+		
+		
+		
+
+		
+	  }
+	 
+
+
+		</style>
+	</head>
+	<body>
+		<div class="slide-menu">
+			<ul>
+				<li data-slide-index="0-0">Cover</li>
+				<li data-slide-index="1-0">
+					Our team &#8595
+					<ul>
+						<li data-slide-index="1-1">Churchill</li>
+						<li data-slide-index="1-2">Global Luxury</li>
+					</ul>
+				</li>
+				<li data-slide-index="2-0">Our team2</li>
+				<li data-slide-index="3-0">Property Overview</li>
+			</ul>
+		</div>
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-iframe="https://onedrive.live.com/embed?resid=4E823CBD7B101EBE%211518&authkey=%21AOUbbWDNIlkogQk&em=2&AllowTyping=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&resen=false&ed1JS=false" data-background-interactive=""></section>
+				
+				
+				<section>
+					<div class="table-container">
+						<div class="table tableHead">
+							<div class="row"><div class="cell">FIRST</div></div>
+							<div class="row"><div class="cell">SECOND</div></div>
+							<div class="row"><div class="cell">THIRD</div></div>
+							<div class="row"><div class="cell">FOURTH</div></div>
+							<div class="row"><div class="cell">FIFTH</div></div>
+							
+						</div>
+					<div class="table">
+						<div class="row">
+							<div class="cell">ONE</div>
+							<div class="cell">TWO</div>
+							<div class="cell">THREE</div>
+							<div class="cell">FOUR</div>
+							<div class="cell">FIVE</div>
+						</div>
+						<div class="row">
+							<div class="cell">one</div>
+							<div class="cell">two</div>
+							<div class="cell">three</div>
+							<div class="cell">four</div>
+							<div class="cell">five</div>
+						</div>
+						<div class="row">
+							<div class="cell">one</div>
+							<div class="cell">two</div>
+							<div class="cell">three</div>
+							<div class="cell">four</div>
+							<div class="cell">five</div>
+						</div>
+						<div class="row">
+							<div class="cell">one</div>
+							<div class="cell">two</div>
+							<div class="cell">three</div>
+							<div class="cell">four</div>
+							<div class="cell">five</div>
+						</div>
+						<div class="row">
+							<div class="cell">one</div>
+							<div class="cell">two</div>
+							<div class="cell">three</div>
+							<div class="cell">four</div>
+							<div class="cell">five</div>
+						</div>
+					</div>
+					</div>
+				</section>
+				<section>
+					<div class="flex-container">
+						<div class="headerColumn">
+							<div class="row"><div class="cell">ONE</div></div>
+							<div class="row"><div class="cell">ONE</div></div>
+							<div class="row"><div class="cell">ONE</div></div>
+							<div class="row"><div class="cell">ONE</div></div>
+							<div class="row"><div class="cell">ONE</div></div>
+						</div>
+					
+						<div class="column">
+							<div class="row"><div class="cell">two</div></div>
+							<div class="row"><div class="cell">two</div></div>
+							<div class="row"><div class="cell">two</div></div>
+							<div class="row"><div class="cell">two</div></div>
+							<div class="row"><div class="cell">two</div></div>
+						</div>
+					
+						<div class="column">
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+						</div>
+						<div class="column">
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+						</div>
+						<div class="column">
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+						</div>
+						<div class="column">
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+						</div>
+						<div class="column">
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+							<div class="row"><div class="cell">three</div></div>
+						</div>
+					</div>
+				</section>
+				<section
+					data-background-video="Bike.mp4"
+					data-background-video-loop
+					data-background-video-muted
+				>
+					<div class="inline-container">
+						<div>
+							<h2 class="r-fit-text">Hersh Tower</h2>
+							<p>125 Broad</p>
+						</div>
+						<div class="vertical-line"></div>
+
+						<div>
+							<h6>This is the little company title</h6>
+							<p>This is other text</p>
+						</div>
+					</div>
+				</section>
+				<section>
+					<section>
+						<h1 class="r-fit-text">OUR TEAM</h1>
+					</section>
+					<section
+						data-preload
+						data-background-iframe="https://www.furnishedhousing.com/churchill-experience"
+						data-background-interactive
+					></section>
+					<section
+						data-preload
+						data-background-iframe="https://www.globalluxurysuites.com/about-us"
+						data-background-interactive
+					></section>
+				</section>
+				<section>
+					<h2>OUR TEAM</h2>
+					<div class="inline-container">
+						<iframe
+							style="border-radius: 15px; height: 400px; margin: 1em"
+							src="https://www.globalluxurysuites.com/about-us"
+							frameborder="0"
+						></iframe>
+						<iframe
+							style="border-radius: 15px; height: 400px"
+							src="https://www.furnishedhousing.com/churchill-experience"
+							frameborder="0"
+						></iframe>
+					</div>
+				</section>
+				<section>
+					<section>
+						<h2>PROPERTY OVERVIEW</h2>
+						<hr />
+						<div class="flex-container">
+							<iframe
+								style="border-radius: 15px; width: 500px"
+								src="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
+								frameborder="0"
+							></iframe>
+
+							<table style="font-size: 20px">
+								<tr>
+									<td>Number of Units</td>
+									<td>93</td>
+								</tr>
+								<tr>
+									<td>Address</td>
+									<td>125 Broad</td>
+								</tr>
+								<tr>
+									<td>City</td>
+									<td>Elizabeth NJ</td>
+								</tr>
+								<tr>
+									<td>Structure</td>
+									<td>High Rise</td>
+								</tr>
+								<tr>
+									<td>Number of Stories</td>
+									<td>14</td>
+								</tr>
+								<tr>
+									<td>Net Rentable Apt SF</td>
+									<td>52,757</td>
+								</tr>
+								<tr>
+									<td>Year Built</td>
+									<td>1920 - 2020</td>
+								</tr>
+								<tr>
+									<td>Avg. Market / Unit</td>
+									<td>$2,140.32</td>
+								</tr>
+								<tr>
+									<td>Avg. Market / SQF</td>
+									<td>$2.88</td>
+								</tr>
+							</table>
+						</div>
+					</section>
+					<section>
+						<h2>PROPERTY OVERVIEW</h2>
+						<hr />
+						<div class="flex-container">
+							<video
+								style="border-radius: 25%"
+								data-autoplay
+								src="https://static.videezy.com/system/resources/previews/000/053/377/original/1new55889996.mp4"
+							></video>
+
+							<table style="font-size: 20px">
+								<tr>
+									<td>Number of Units</td>
+									<td>93</td>
+								</tr>
+								<tr>
+									<td>Address</td>
+									<td>125 Broad</td>
+								</tr>
+								<tr>
+									<td>City</td>
+									<td>Elizabeth NJ</td>
+								</tr>
+								<tr>
+									<td>Structure</td>
+									<td>High Rise</td>
+								</tr>
+								<tr>
+									<td>Number of Stories</td>
+									<td>14</td>
+								</tr>
+								<tr>
+									<td>Net Rentable Apt SF</td>
+									<td>52,757</td>
+								</tr>
+								<tr>
+									<td>Year Built</td>
+									<td>1920 - 2020</td>
+								</tr>
+								<tr>
+									<td>Avg. Market / Unit</td>
+									<td>$2,140.32</td>
+								</tr>
+								<tr>
+									<td>Avg. Market / SQF</td>
+									<td>$2.88</td>
+								</tr>
+							</table>
+						</div>
+					</section>
+					<section
+						data-preload
+						data-background-iframe="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
+						data-background-interactive=""
+					></section>
+					<section
+						data-preload
+						data-background-iframe="https://smplr.me/yHWSgbe"
+						data-background-interactive=""
+					></section>
+				</section>
+				<section data-auto-animate="">
+					<h5>DEAL HIGHLIGHT – INVESTMENT</h5>
+					<table
+						data-id="box2table1"
+						style="
+							background-color: tomato;
+							width: 100px;
+							height: 100px;
+							margin: 1em;
+							border-radius: 50%;
+						"
+					></table>
+					<table
+						data-id="box2table2"
+						style="
+							background-color: tomato;
+							width: 100px;
+							height: 100px;
+							margin: 1em;
+							border-radius: 50%;
+						"
+					></table>
+				</section>
+				<section data-auto-animate>
+					<h5>DEAL HIGHLIGHT – INVESTMENT</h5>
+					<table
+						data-id="box2table1"
+						style="
+							background-color: hsl(180, 100%, 50%, 0.4);
+							border-radius: 15px;
+						"
+						class="r-fit-text"
+					>
+						<tr>
+							<th>TOTAL TRANSACTION USES</th>
+							<th>Amount</th>
+							<th>Per Unit</th>
+							<th>Per R-SQF</th>
+							<th>% of Cost</th>
+						</tr>
+						<tr>
+							<td>Purchase Price</td>
+							<td>$15,525,000.00</td>
+							<td>$166,935.48</td>
+							<td>$294.27</td>
+							<td>52.11%</td>
+						</tr>
+						<tr>
+							<td>Capex</td>
+							<td>$11,000,000.00</td>
+							<td>$118,279.57</td>
+							<td>$208.50</td>
+							<td>36.92%</td>
+						</tr>
+						<tr>
+							<td>Closing Costs & Reserves</td>
+							<td>$3,268,038.90</td>
+							<td>$35,140.20</td>
+							<td>$61.95</td>
+							<td>10.97%</td>
+						</tr>
+						<tr>
+							<td>TOTAL USES</td>
+							<td>$29,793,038.90</td>
+							<td>$320,355.26</td>
+							<td>$564.72</td>
+							<td>100%</td>
+						</tr>
+					</table>
+
+					<table
+						data-id="box2table2"
+						style="
+							background-color: hsl(180, 100%, 50%, 0.4);
+							border-radius: 15px;
+						"
+						class="r-fit-text"
+					>
+						<tr>
+							<th>TOTAL TRANSACTION SOURCES</th>
+							<th>AMOUNT</th>
+							<th>DEAL % LEVERAGE</th>
+						</tr>
+						<tr>
+							<td>Mortgage Financing</td>
+							<td>21,748,918.40</td>
+							<td>
+								73
+								<tr>
+									<td>EquityCapital</td>
+									<td>8,044,120.50</td>
+									<td>27%</td>
+								</tr>
+								<tr>
+									<td>TOTAL SOURCES</td>
+									<td>$ 29,793,038.90</td>
+									<td>100%</td>
+								</tr>
+							</td>
+						</tr>
+					</table>
+				</section>
+				<section>
+          <div class="tableContainer">
+            <table class="table-header">
+              <tr>
+                <th>Year</th>
+              </tr>
+              <tr>
+<th >Gross Potential Rent</th>
+              </tr>
+              <tr>
+<th>Retail Income</th>
+              </tr>
+              <tr>
+                <th >Other Income</th>
+              </tr>
+              <tr>
+                <th >Vacancy</th>
+              </tr>
+              <tr>
+                <th>Loss to Lease</th>
+              </tr>
+              <tr>
+<th >Net Revenue</th>
+              </tr>
+              <tr>
+                <th >Expenses</th>
+              </tr>
+              <tr>
+                <th >Expenses Ratio</th>
+              </tr>
+              <tr>
+                <th>Net Operating Income</th>
+              </tr>
+              <tr>
+                <th >Cap Rate</th>
+              </tr>
+              </table>
+            
+					<table class="table-body"
+						
+					>
+						<tr>
+							<th class="expandable">2023</th>
+							<th class="expandable">2024</th>
+							<th class="expandable">2025</th>
+							<th class="expandable">2026</th>
+							<th class="expandable">2027</th>
+							<th class="expandable">2028</th>
+							<th class="expandable">2029</th>
+							<th class="expandable">2030</th>
+							<th class="expandable">2031</th>
+							<th class="expandable">2032</th>
+              
+						</tr>
+						<tr>
+							
+							<td class="expandable">$2,388,600.00</td>
+							<td class="expandable">$2,460,258.00</td>
+							<td class="expandable">$2,534,065.74</td>
+							<td class="expandable">$2,610,087.71</td>
+							<td class="expandable">$2,688,390.34</td>
+							<td class="expandable">$2,769,042.05</td>
+							<td class="expandable">$2,852,113.32</td>
+							<td class="expandable">$2,937,676.71</td>
+							<td class="expandable">$3,025,807.02</td>
+							<td class="expandable">$3,116,581.23</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">$314,045.00</td>
+							<td class="expandable">$323,466.35</td>
+							<td class="expandable">$333,170.34</td>
+							<td class="expandable">$343,165.45</td>
+							<td class="expandable">$353,460.41</td>
+							<td class="expandable">$364,064.23</td>
+							<td class="expandable">$374,986.15</td>
+							<td class="expandable">$386,235.74</td>
+							<td class="expandable">$397,822.81</td>
+							<td class="expandable">$409,757.49</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">$0</td>
+							<td class="expandable">$143,555.22</td>
+							<td class="expandable">$147,861.88</td>
+							<td class="expandable">$152,297.73</td>
+							<td class="expandable">$156,866.66</td>
+							<td class="expandable">$161,572.66</td>
+							<td class="expandable">$166,419.84</td>
+							<td class="expandable">$171,412.44</td>
+							<td class="expandable">$176,554.81</td>
+							<td class="expandable">$181,851.46</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">100%</td>
+							<td class="expandable">30%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+							<td class="expandable">5%</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">($2,702,645.00)</td>
+							<td class="expandable">($1,006,780.31)</td>
+							<td class="expandable">($320,174.70)</td>
+							<td class="expandable">($329,779.94)</td>
+							<td class="expandable">($339,673.33)</td>
+							<td class="expandable">($349,863.53)</td>
+							<td class="expandable">($360,359.44)</td>
+							<td class="expandable">($371,170.22)</td>
+							<td class="expandable">($382,305.33)</td>
+							<td class="expandable">($393,774.49)</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">$0</td>
+							<td class="expandable">$1,920,499.26</td>
+							<td class="expandable">$2,694,923.26</td>
+							<td class="expandable">$2,775,770.96</td>
+							<td class="expandable">$2,859,044.09</td>
+							<td class="expandable">$2,944,815.41</td>
+							<td class="expandable">$3,033,159.87</td>
+							<td class="expandable">$3,124,154.67</td>
+							<td class="expandable">$3,217,879.31</td>
+							<td class="expandable">$3,314,415.69</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">$233,956.00</td>
+							<td class="expandable">$552,676.83</td>
+							<td class="expandable">$638,204.49</td>
+							<td class="expandable">$657,350.63</td>
+							<td class="expandable">$677,071.15</td>
+							<td class="expandable">$697,383.28</td>
+							<td class="expandable">$718,304.78</td>
+							<td class="expandable">$739,853.92</td>
+							<td class="expandable">$762,049.54</td>
+							<td class="expandable">$784,911.03</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">29%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable">24%</td>
+							<td class="expandable"></td>
+						</tr>
+						<tr>
+							
+							<td class="expandable">($233,956.00)</td>
+							<td class="expandable">$1,367,822.43</td>
+							<td class="expandable">$2,056,718.77</td>
+							<td class="expandable">$2,118,420.33</td>
+							<td class="expandable">$2,181,972.94</td>
+							<td class="expandable">$2,247,432.13</td>
+							<td class="expandable">$2,314,855.09</td>
+							<td class="expandable">$2,384,300.74</td>
+							<td class="expandable">$2,455,829.77</td>
+							<td class="expandable">$2,529,504.66</td>
+						</tr>
+						<tr>
+							
+							<td class="expandable"></td>
+							<td class="expandable">4.59%</td>
+							<td class="expandable">6.90%</td>
+							<td class="expandable">7.11%</td>
+							<td class="expandable">7.32%</td>
+							<td class="expandable">7.54%</td>
+							<td class="expandable">7.77%</td>
+							<td class="expandable">8.00%</td>
+							<td class="expandable">8.24%</td>
+							<td class="expandable">8.49%</td>
+						</tr>
+					</table>
+          </div>
+				</section>
+        <section data-background-iframe="https://onedrive.live.com/edit.aspx?action=editnew&resid=4E823CBD7B101EBE!1516&ithint=file%2cxlsx&action=editnew&ct=1683548758055&wdNewAndOpenCt=1683548758055&wdPreviousSession=593f9d52-32b4-4ef0-accc-2771c5bc2444&wdOrigin=OFFICECOM-WEB.START.NEW"></section>
+			</div>
+		</div>
+    
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/markdown/markdown.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			// More info about initialization & config:
+			// - https://revealjs.com/initialization/
+			// - https://revealjs.com/config/
+			Reveal.initialize({
+				hash: true,
+				parallaxBackgroundImage: "https://www.hdwallpapers.in/download/paper_craft_4k-HD.jpg",
+				parallaxBackgroundSize: "4000px 2250px",
+				parallaxBackgroundHorizontal: 100,
+				parallaxBackgroundVertical:25,
+
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealMarkdown, RevealHighlight, RevealNotes],
+			});
+		</script>
+		<script>
+			document.addEventListener("DOMContentLoaded", function () {
+				const expandableCells = document.querySelectorAll(".expandable");
+
+				expandableCells.forEach((cell) => {
+					cell.addEventListener("mouseenter", expandColumn);
+					cell.addEventListener("mouseleave", shrinkColumn);
+				});
+
+				function expandColumn(event) {
+					const index = event.target.cellIndex;
+					const rows = event.target.parentElement.parentElement.rows;
+
+					for (let i = 0; i < rows.length; i++) {
+						rows[i].cells[index].classList.add("expanded");
+					}
+				}
+
+				function shrinkColumn(event) {
+					const index = event.target.cellIndex;
+					const rows = event.target.parentElement.parentElement.rows;
+
+					for (let i = 0; i < rows.length; i++) {
+						rows[i].cells[index].classList.remove("expanded");
+					}
+				}
+			});
+		</script>
+		<script>
+			// Wait for Reveal.js to be fully initialized
+			Reveal.on("ready", function () {
+				// Select all menu items and add a click event listener to each of them
+				document
+					.querySelectorAll(".slide-menu li")
+					.forEach(function (menuItem) {
+						menuItem.addEventListener("click", function (event) {
+							// Get the slide indices from the data-slide-index attribute
+							var slideIndices = event.target
+								.getAttribute("data-slide-index")
+								.split("-");
+							var hIndex = parseInt(slideIndices[0], 10);
+							var vIndex = parseInt(slideIndices[1], 10);
+
+							// Navigate to the slide using Reveal.js API
+							Reveal.slide(hIndex, vIndex);
+						});
+					});
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<title>reveal.js – The HTML Presentation Framework</title>
+
+		<meta
+			name="description"
+			content="A framework for easily creating beautiful presentations using HTML"
+		/>
+		<meta name="author" content="Hakim El Hattab" />
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta
+			name="apple-mobile-web-app-status-bar-style"
+			content="black-translucent"
+		/>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="../dist/reset.css" />
+		<link rel="stylesheet" href="../dist/reveal.css" />
+		<link rel="stylesheet" href="../dist/theme/white-contrast.css" id="theme" />
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="../plugin/highlight/monokai.css" />
+		<style>
+			.gridContainer {
+				position: absolute;
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-template-rows: repeat(3, 1fr);
+				gap: 10px;
+				height: 100vh;
+				width: 100vw;
+				padding: 5px;
+			}
+			.grid-container {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				grid-gap: 10px;
+			}
+			.grid-item {
+				text-align: center;
+			}
+			.slideV {
+				height: 100vh;
+				background-color: hsl(0, 0%, 100%, 0.8) /* hsl(180, 15%, 20%, 0.5) */;
+			}
+			.slideH {
+				background-color: hsl(0, 0%, 100%, 0.8);
+			}
+			p {
+				font-size: 20px;
+			}
+			.team {
+				border-radius: 50%;
+				height: 100px;
+				width: 100px;
+				margin: 0px;
+				border: 1px solid purple;
+			}
+			.selected {
+				border: 1px solid white;
+			}
+			.team:hover {
+				cursor: pointer;
+				border-color: white;
+			}
+
+			.right-window {
+				width: 100%;
+				height: 100%;
+				display: none;
+
+				overflow: auto;
+			}
+			.tab-content {
+				display: none;
+			}
+			.tab-button {
+				display: inline-block;
+				padding: 8px 16px;
+				cursor: pointer;
+			}
+			.tab-button:hover {
+				background-color: #ddd;
+			}
+			.tab-button.active {
+				background-color: #ccc;
+			}
+
+			.hamburger-icon {
+				position: fixed;
+				top: 10px;
+				left: 10px;
+				font-size: 30px;
+				cursor: pointer;
+				z-index: 999;
+				color: #fff;
+			}
+			.nav-menu {
+				position: fixed;
+				top: 0;
+				left: -250px;
+				width: 250px;
+				height: 100%;
+				background-color: white;
+				overflow: auto;
+				transition: left 0.3s;
+				z-index: 1000;
+			}
+			.nav-menu.open {
+				left: 0;
+			}
+			.nav-menu ul {
+				list-style-type: none;
+				margin: 0;
+				padding: 0;
+				margin-top: 30px;
+			}
+			.nav-menu li {
+				padding: 12px 16px;
+			}
+			.nav-menu li a {
+				color: black;
+				text-decoration: none;
+				display: block;
+			}
+
+			.nav-menu .dropdown {
+				max-height: 0;
+				overflow: hidden;
+				transition: max-height 0.3s ease-in-out;
+			}
+			.nav-menu .dropdown.open {
+				max-height: 300px;
+			}
+			.nav-menu .dropdown li {
+				padding-left: 32px;
+			}
+			.nav-menu .dropdown-trigger {
+				cursor: pointer;
+				position: relative;
+			}
+			.nav-menu .dropdown-trigger::after {
+				content: "▼";
+				position: absolute;
+				top: 50%;
+				right: 10px;
+				transform: translateY(-50%);
+				transition: transform 0.3s ease-in-out;
+			}
+			.nav-menu .dropdown-trigger.open::after {
+				transform: translateY(-50%) rotate(180deg);
+			}
+			.nav-menu .close-menu {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				font-size: 20px;
+				cursor: pointer;
+			}
+			.nav-menu .current-vertical-slide {
+				background-color: #777;
+			}
+			.nav-menu .dropdown.active {
+				max-height: 300px;
+			}
+			#carousel {
+				max-height: 80vh;
+				max-width: 80vw;
+				position: relative;
+				overflow: hidden;
+				border-radius: 10px;
+			}
+
+			.carousel-images {
+				width: 100%;
+				padding-left: 25px;
+			}
+
+			.carousel-image {
+				width: 100%;
+				display: none;
+			}
+
+			.carousel-image:first-child {
+				display: block;
+			}
+
+			#carousel-prev,
+			#carousel-next {
+				position: absolute;
+				top: 50%;
+				transform: translateY(-50%);
+				font-size: 1.5rem;
+				border: none;
+			}
+
+			#carousel-prev {
+				left: 10px;
+			}
+
+			#carousel-next {
+				right: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="hamburger-icon">
+			<img src="../media/Canari Structure.png" />
+		</div>
+		<div class="nav-menu">
+			<ul>
+				<li class="nav-item">
+					<a class="current-slide dropdown-trigger">NAVIGATION</a>
+					<ul class="dropdown">
+						<hr />
+						<li><a href="#">Start</a></li>
+						<hr />
+						<li><a href="#/2">Confidentiality</a></li>
+						<hr />
+						<li><a href="#/3">Executive Summary</a></li>
+						<hr />
+						<li><a href="#/4">Property Overview</a></li>
+						<hr />
+						<li><a href="#/5">Market Analysis</a></li>
+						<hr />
+						<li><a href="#/6">Risk Analysis</a></li>
+						<hr />
+						<li><a href="#/7">Financial Projections</a></li>
+						<hr />
+						<li><a href="#/9">Our Team</a></li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a class="dropdown-trigger">DISCLAIMER</a>
+					<ul class="dropdown">
+						<p style="padding-bottom: 10px; font-size: 15px">
+							This memorandum by ABC Realty presents a potential commercial real
+							estate investment opportunity and is provided for your
+							consideration. It is not an offer to sell or solicit an offer to
+							buy any security. The actual offer or solicitation will be made
+							through a confidential private offering memorandum that includes
+							important information and risk factors. The information in this
+							memorandum is based on reliable sources but neither ABC Realty nor
+							its affiliates make any representations or warranties regarding
+							its accuracy or completeness.
+						</p>
+					</ul>
+				</li>
+				<!-- Add more slides here -->
+			</ul>
+			<div class="close-menu">&times;</div>
+		</div>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<div>
+						<img src="../media/canariLOGO-removebg-preview.png" alt="" />
+					</div>
+				</section>
+				<section>
+					<div class="gridContainer">
+						<div class="slideV">
+							<h2>Oakwood Residences</h2>
+							<h5>123 Elm Street, Springfield, USA</h5>
+							<p>
+								A stunning, modern multi-family apartment complex in the heart
+								of Springfield.
+							</p>
+							<video data-autoplay src="../Bike.mp4"></video>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="slideH">
+						<h2>CONFIDENTIALITY</h2>
+						<p>
+							This presentation is intended for the exclusive use of the
+							recipient and may not be reproduced, distributed, or otherwise
+							disclosed without the express written consent of the presenting
+							party. The information contained herein is believed to be accurate
+							but should be independently verified by the recipient.
+						</p>
+					</div>
+				</section>
+				<section>
+					<div class="slideH">
+						<h2>EXECUTIVE SUMMARY</h2>
+						<p>
+							We are pleased to present an investment opportunity in a 399-unit
+							multifamily property located in Boston, Massachusetts. The
+							property is situated in a highly desirable location with strong
+							demand for rental units, making it an attractive investment
+							opportunity for both experienced and first-time investors.
+						</p>
+						<p>
+							The property is a Class A apartment complex that offers a mix of
+							studio, one-, and two-bedroom units, with spacious floor plans and
+							modern amenities. The property is well-maintained and in excellent
+							condition, with recent upgrades to common areas and unit
+							interiors. The property benefits from its prime location in a
+							rapidly growing neighborhood with access to public transportation,
+							major highways, and a variety of dining and entertainment options.
+							The area is known for its strong employment and educational
+							opportunities, making it a popular choice for young professionals
+							and families.
+						</p>
+
+						<p>
+							The investment opportunity includes the acquisition of the
+							property at an attractive price point with potential for value-add
+							opportunities through operational efficiencies, targeted upgrades,
+							and rental increases. The property has a strong historical
+							occupancy and rent growth rate, and we anticipate continued strong
+							demand for rental units in the area.
+						</p>
+					</div>
+				</section>
+				<section>
+					<section>
+						<div class="slideH">
+							<h1 class="r-fit-text">PROPERTY OVERVIEW</h1>
+						</div>
+					</section>
+					<section>
+						<div class="slideH">
+							<h2>PROPERTY OVERVIEW</h2>
+							<div style="display: grid; grid-template-columns: 2fr 1fr 2fr">
+								<p>
+									We are pleased to present an investment opportunity in a
+									399-unit multifamily property located in Boston,
+									Massachusetts. The property is situated in a highly desirable
+									location with strong demand for rental units, making it an
+									attractive investment opportunity for both experienced and
+									first-time investors. The property is a Class A apartment
+									complex that offers a mix of studio, one-, and two-bedroom
+									units, with spacious floor plans and modern amenities. The
+									property is well-maintained and in excellent condition, with
+									recent upgrades to common areas and unit interiors.
+								</p>
+								<div
+									style="
+										border-left: 1px solid black;
+										height: 300px;
+										transform: translateX(50%);
+									"
+								></div>
+								<div>
+									<p>AMENITIES</p>
+									<div class="grid-container">
+										<div
+											class="grid-item"
+											id="amenity-pool"
+											data-desc="Enjoy a refreshing swim in our clean and serene swimming pool."
+										>
+											<i
+												class="fa-solid fa-person-swimming"
+												style="
+													border-radius: 50%;
+													background-color: #ccc;
+													padding: 10px;
+												"
+											></i>
+											<p style="font-size: 15px">Pool</p>
+										</div>
+										<div
+											class="grid-item"
+											id="spacious-units"
+											data-desc="Each unit is spacious, giving you the comfort and freedom you need."
+										>
+											<i
+												class="fa-solid fa-house"
+												style="
+													border-radius: 50%;
+													background-color: #ccc;
+													padding: 10px;
+												"
+											></i>
+											<p style="font-size: 15px">Spacious units</p>
+										</div>
+										<div
+											class="grid-item"
+											id="gym"
+											data-desc="Maintain your fitness regimen in our well-equipped gym."
+										>
+											<i
+												class="fa-solid fa-dumbbell"
+												style="
+													border-radius: 50%;
+													background-color: #ccc;
+													padding: 10px;
+												"
+											></i>
+											<p style="font-size: 15px">Gym</p>
+										</div>
+										<div
+											class="grid-item"
+											id="amenity-maintenance"
+											data-desc="We offer 24/7 maintenance services to ensure your comfort and convenience."
+										>
+											<i
+												class="fa-solid fa-screwdriver-wrench"
+												style="
+													border-radius: 50%;
+													background-color: #ccc;
+													padding: 10px;
+												"
+											></i>
+											<p style="font-size: 15px">24/7 Maintenance</p>
+										</div>
+										<div
+											class="grid-item"
+											id="wd-units"
+											data-desc="In-unit washer and dryer for your convenience."
+										>
+											<i
+												class="fa-solid fa-jug-detergent"
+												style="
+													border-radius: 50%;
+													background-color: #ccc;
+													padding: 10px;
+												"
+											></i>
+											<p style="font-size: 15px">W/D Units</p>
+										</div>
+										<div
+											class="grid-item"
+											id="public-transport"
+											data-desc="Easily accessible public transportation nearby."
+										>
+											<i
+												class="fa-solid fa-train"
+												style="
+													border-radius: 50%;
+													background-color: #ccc;
+													padding: 10px;
+												"
+											></i>
+											<p style="font-size: 15px">Public Transport</p>
+										</div>
+									</div>
+									<div
+										id="description"
+										style="margin-top: 20px; font-size: 20px"
+									></div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div id="carousel" class="slideH">
+							<div class="carousel-images">
+								<img
+									src="https://cdn.decorilla.com/online-decorating/wp-content/uploads/2018/10/modern-living-room-neutral-walls.jpg"
+									class="carousel-image"
+								/>
+								<img
+									src="https://th.bing.com/th/id/OIP.W_T-YH9LW4A9E9wEUmvbeAHaFP?pid=ImgDet&rs=1"
+									class="carousel-image"
+								/>
+								<img
+									src="https://us.amara.com/luxpad/wp-content/uploads/2017/01/26331516806_418a17ab41_o-min.jpg"
+									class="carousel-image"
+								/>
+								<img
+									src="https://th.bing.com/th/id/OIP.cHlKSZvxIHRlIN7LP81tCgHaFj?pid=ImgDet&w=1920&h=1440&rs=1"
+									class="carousel-image"
+								/>
+								<img
+									src="https://images.designtrends.com/wp-content/uploads/2015/12/30094405/Top-BedRoom-Design-For-Royal-Look.jpeg"
+									class="carousel-image"
+								/>
+								<!-- Add more images as needed -->
+							</div>
+							<div id="carousel-prev">
+								<i class="fa-solid fa-chevron-left"></i>
+							</div>
+							<div id="carousel-next">
+								<i class="fa-solid fa-chevron-right"></i>
+							</div>
+						</div>
+					</section>
+					<section
+						data-preload
+						data-background-iframe="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
+						data-background-interactive=""
+					></section>
+					<section
+						data-preload
+						data-background-iframe="https://smplr.me/yHWSgbe"
+						data-background-interactive=""
+					></section>
+					<section>
+						<div class="slideH r-fit-text">
+							<ul>
+								<li>
+									Class A apartment complex with well-maintained grounds and
+									modern amenities
+								</li>
+								<li>
+									Spacious units with open layouts, high ceilings, and large
+									windows that provide abundant natural light
+								</li>
+								<li>
+									Newly renovated common areas, including a fitness center,
+									resident lounge, and outdoor grilling area
+								</li>
+								<li>Gated parking garage with direct access to the building</li>
+								<li>
+									On-site management office and 24-hour emergency maintenance
+								</li>
+								<li>
+									Pet-friendly policies and services, including a dog park and
+									grooming station
+								</li>
+								<li>
+									In-unit washer and dryer, stainless steel appliances, and
+									granite countertops in many units
+								</li>
+								<li>
+									Convenient location near public transportation, major
+									highways, and a variety of dining and entertainment options
+								</li>
+								<li>
+									Proximity to top employers, including biotech and healthcare
+									companies, universities, and financial institutions
+								</li>
+								<li>
+									Strong historical occupancy and rent growth rates, with
+									potential for additional value-add opportunities through
+									targeted upgrades and operational efficiencies.
+								</li>
+							</ul>
+						</div>
+					</section>
+				</section>
+				<section>
+					<div class="slideH">
+						<h2>MARKET ANALYSIS</h2>
+						<p>
+							The property's location in a desirable neighborhood with strong
+							demand for rental units is a key factor in its attractiveness as
+							an investment opportunity. The neighborhood offers easy access to
+							major employment centers, cultural attractions, and recreational
+							amenities, making it a popular choice for young professionals and
+							families. The area also has a limited supply of new multifamily
+							construction, which is expected to support continued rent growth
+							and high occupancy rates.
+						</p>
+						<div class="r-fit-text">
+							<ul style="list-style: none">
+								<li>
+									<i class="fa-solid fa-circle-arrow-right"></i> The city has a
+									population of approximately 700,000 residents
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-arrow-right"></i> Boston is home
+									to numerous world-class universities, hospitals, and biotech
+									firms, as well as a thriving financial services industry
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-arrow-right"></i> Boston boasts
+									consistently high occupancy rates and steady rent growth.
+									According to a report by CBRE, the average occupancy rate for
+									multifamily properties in Boston was 96.5% in 2023, up from
+									96.2% in 2022. The same report also indicates that rental
+									rates in the city have increased by approximately 2.6%
+									year-over-year.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-arrow-right"></i> According to
+									the Bureau of Labor Statistics, the unemployment rate in the
+									Boston-Cambridge-Newton metropolitan area was 2.7% as of March
+									2022 (the national average is 4.2%).
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-arrow-right"></i> The population
+									of the city is projected to grow by 4.6% between 2020 and
+									2025, according to a report by Marcus & Millichap.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="slideH">
+						<h2>RISK ANALYSIS</h2>
+						<p>
+							It's important to recognize that although we believe this deal to
+							be an excellent one, it is not risk-free. Examples of risk factors
+							include:
+						</p>
+						<div class="r-fit-text">
+							<ul style="list-style: none">
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Market Risk: A
+									decline in the Boston real estate market could negatively
+									impact the property's value and rental income.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Renovation
+									Risk: Unexpected costs or delays. We have incorporated
+									reserves to mitigate this risk.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Tenant Risk:
+									Occupancy depends on tenants' ability to pay rent and adhere
+									to lease agreements. We conduct extensive background checks on
+									all tenants.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Competition
+									Risk: The property faces competition from other multifamily
+									properties in the area, which could impact occupancy rates and
+									rental income.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Interest Rate
+									Risk: Changes in interest rates could impact the property's
+									financing costs and overall profitability.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Regulatory
+									Risk: Changes in local or state regulations could impact the
+									property's operations or require additional compliance costs.
+								</li>
+								<li>
+									<i class="fa-solid fa-circle-exclamation"></i> Natural
+									Disaster Risk: The property may be at risk of damage from
+									natural disasters such as hurricanes, floods, or earthquakes,
+									which could result in unexpected repair costs and a disruption
+									of operations.
+								</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+
+				<section>
+					<div class="slideH">
+						<h2>FINANCIAL PROJECTIONS</h2>
+						<table class="r-fit-text">
+							<tr>
+								<th>Property</th>
+								<th>Year 1</th>
+								<th>Year 2</th>
+								<th>Year 3</th>
+								<th>Year 4</th>
+								<th>Year 5</th>
+								<th>Next 12 Months</th>
+							</tr>
+							<tr>
+								<td>Property 1</td>
+								<td>$20,000</td>
+								<td>$21,000</td>
+								<td>$22,000</td>
+								<td>$23,000</td>
+								<td>$24,000</td>
+								<td>$20,500</td>
+							</tr>
+							<tr>
+								<td>Property 2</td>
+								<td>$25,000</td>
+								<td>$26,000</td>
+								<td>$27,000</td>
+								<td>$28,000</td>
+								<td>$29,000</td>
+								<td>$25,500</td>
+							</tr>
+							<tr>
+								<td>Property 3</td>
+								<td>$30,000</td>
+								<td>$31,000</td>
+								<td>$32,000</td>
+								<td>$33,000</td>
+								<td>$34,000</td>
+								<td>$30,500</td>
+							</tr>
+							<tr>
+								<td>Property 4</td>
+								<td>$35,000</td>
+								<td>$36,000</td>
+								<td>$37,000</td>
+								<td>$38,000</td>
+								<td>$39,000</td>
+								<td>$35,500</td>
+							</tr>
+							<tr>
+								<td>Property 5</td>
+								<td>$40,000</td>
+								<td>$41,000</td>
+								<td>$42,000</td>
+								<td>$43,000</td>
+								<td>$44,000</td>
+								<td>$40,500</td>
+							</tr>
+							<tr>
+								<td>Property 6</td>
+								<td>$45,000</td>
+								<td>$46,000</td>
+								<td>$47,000</td>
+								<td>$48,000</td>
+								<td>$49,000</td>
+								<td>$45,500</td>
+							</tr>
+						</table>
+					</div>
+				</section>
+				<section data-auto-animate data-background-color="aquamarine">
+					<h2>OUR TEAM</h2>
+					<div
+						style="
+							display: flex;
+
+							justify-content: space-between;
+						"
+					>
+						<div class="test" id="div1" onclick="openRightWindow(1)">
+							<img
+								class="team"
+								src="https://th.bing.com/th/id/OIP.EVCGXvrjsvMrhfOX3su_FgAAAA?pid=ImgDet&rs=1"
+								alt=""
+							/>
+						</div>
+						<div class="test" id="div2" onclick="openRightWindow(2)">
+							<img
+								class="team"
+								src="https://th.bing.com/th/id/OIP.QsD4dx-0aNiXgnBPpBZszQHaHa?pid=ImgDet&rs=1"
+								alt=""
+							/>
+						</div>
+						<div class="test" id="div3" onclick="openRightWindow(3)">
+							<img
+								class="team"
+								src="https://th.bing.com/th/id/OIP.yBY_tsNonXGHu4Ut3BbWtwAAAA?pid=ImgDet&w=262&h=324&rs=1"
+								alt=""
+							/>
+						</div>
+					</div>
+				</section>
+				<section data-auto-animate data-background-color="aquamarine">
+					<div class="gridContainer">
+						<div
+							style="
+								display: flex;
+								flex-direction: column;
+								justify-content: space-between;
+								height: 90vh;
+							"
+						>
+							<div class="test" id="div1" onclick="openRightWindow(1)">
+								<img
+									class="team"
+									src="https://th.bing.com/th/id/OIP.EVCGXvrjsvMrhfOX3su_FgAAAA?pid=ImgDet&rs=1"
+									style="margin-bottom: 0px"
+									alt=""
+								/>
+								<p style="margin-top: 0px">Jonathan</p>
+							</div>
+							<div class="test" id="div2" onclick="openRightWindow(2)">
+								<img
+									class="team"
+									src="https://th.bing.com/th/id/OIP.QsD4dx-0aNiXgnBPpBZszQHaHa?pid=ImgDet&rs=1"
+									style="margin-bottom: 0px"
+									alt=""
+								/>
+								<p style="margin-top: 0px">Joana</p>
+							</div>
+							<div class="test" id="div3" onclick="openRightWindow(3)">
+								<img
+									class="team"
+									src="https://th.bing.com/th/id/OIP.yBY_tsNonXGHu4Ut3BbWtwAAAA?pid=ImgDet&w=262&h=324&rs=1"
+									style="margin-bottom: 0px"
+									alt=""
+								/>
+								<p style="margin-top: 0px">Julia</p>
+							</div>
+						</div>
+
+						<div id="right-window1" class="right-window">
+							<div style="display: flex">
+								<div class="tab-button" onclick="openTab(1, 1)">BIO</div>
+								<div class="tab-button" onclick="openTab(1, 2)">LinkdIn</div>
+								<div class="tab-button" onclick="openTab(1, 3)">Contact</div>
+							</div>
+
+							<div id="tab1" class="tab-content">
+								<p>
+									Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+									Consectetur assumenda aliquam asperiores obcaecati dicta
+									repudiandae eaque rem suscipit excepturi qui accusamus iste
+									quisquam, aspernatur voluptates animi. Officia culpa et quod.
+								</p>
+							</div>
+							<div id="tab2" class="tab-content">
+								<iframe
+									src="https://www.linkedin.com/in/mikefertik?trk=people-guest_people_search-card"
+									frameborder="0"
+									height="500px"
+								></iframe>
+							</div>
+							<div id="tab3" class="tab-content">
+								<h2>Person 1 - Tab 3</h2>
+								<p>
+									Person 1 - Tab 3 content goes here. Use this tab to share
+									additional details about Person 1.
+								</p>
+							</div>
+						</div>
+
+						<div id="right-window2" class="right-window">
+							<div style="display: flex">
+								<div class="tab-button" onclick="openTab(2, 1)">BIO</div>
+								<div class="tab-button" onclick="openTab(2, 2)">LinkdIn</div>
+								<div class="tab-button" onclick="openTab(2, 3)">Contact</div>
+							</div>
+
+							<div id="tab4" class="tab-content">
+								<h2>Person 2 - Tab 1</h2>
+								<p>
+									Person 2 - Tab 1 content goes here. You can add more
+									information about Person 2 in this tab.
+								</p>
+							</div>
+							<div id="tab5" class="tab-content">
+								<h2>Person 2 - Tab 2</h2>
+								<p>
+									Person 2 - Tab 2 content goes here. This tab can contain
+									different information about Person 2.
+								</p>
+							</div>
+							<div id="tab6" class="tab-content">
+								<h2>Person 2 - Tab 3</h2>
+								<p>
+									Person 2 - Tab 3 content goes here. Use this tab to share
+									additional details about Person 2.
+								</p>
+							</div>
+						</div>
+
+						<div id="right-window3" class="right-window">
+							<div style="display: flex">
+								<div class="tab-button" onclick="openTab(3, 1)">BIO</div>
+								<div class="tab-button" onclick="openTab(3, 2)">LinkdIn</div>
+								<div class="tab-button" onclick="openTab(3, 3)">Contact</div>
+							</div>
+
+							<div id="tab7" class="tab-content">
+								<h2>Person 3 - Tab 1</h2>
+								<p>
+									Person 3 - Tab 1 content goes here. You can add more
+									information about Person 3 in this tab.
+								</p>
+							</div>
+							<div id="tab8" class="tab-content">
+								<h2>Person 3 - Tab 2</h2>
+								<p>
+									Person 3 - Tab 2 content goes here. This tab can contain
+									different information about Person 3.
+								</p>
+							</div>
+							<div id="tab9" class="tab-content">
+								<h2>Person 3 - Tab 3</h2>
+								<p>
+									Person 3 - Tab 3 content goes here. Use this tab to share
+									additional details about Person 3.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</div>
+
+		<script src="../dist/reveal.js"></script>
+		<script src="../plugin/zoom/zoom.js"></script>
+		<script src="../plugin/notes/notes.js"></script>
+		<script src="../plugin/search/search.js"></script>
+		<script src="../plugin/highlight/highlight.js"></script>
+		<script>
+			// Also available as an ES module, see:
+			// https://revealjs.com/initialization/
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: true,
+				hash: true,
+				parallaxBackgroundImage:
+					"https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-estate-01.jpg",
+				parallaxBackgroundSize: "2000px 2000px",
+				parallaxBackgroundHorizontal: 25,
+				parallaxBackgroundVertical: 10,
+				progress: false,
+
+				// Learn about plugins: https://revealjs.com/plugins/
+				plugins: [RevealZoom, RevealNotes, RevealSearch, RevealHighlight],
+			});
+		</script>
+		<script>
+			function openRightWindow(windowIndex) {
+				let rightWindows = document.getElementsByClassName("right-window");
+				let people = document.getElementsByClassName("test");
+
+				for (let i = 0; i < rightWindows.length; i++) {
+					rightWindows[i].style.display = "none";
+				}
+
+				// Remove 'selected' class from all 'test' divs
+				for (let i = 0; i < people.length; i++) {
+					people[i].classList.remove("selected");
+				}
+
+				// Add 'selected' class to selected div
+				document.getElementById(`div${windowIndex}`).classList.add("selected");
+
+				document.getElementById(`right-window${windowIndex}`).style.display =
+					"block";
+				openTab(windowIndex, 1);
+			}
+
+			function openTab(windowIndex, tabIndex) {
+				let tabContents = document.querySelectorAll(
+					`#right-window${windowIndex} .tab-content`
+				);
+				let tabButtons = document.querySelectorAll(
+					`#right-window${windowIndex} .tab-button`
+				);
+
+				for (let i = 0; i < tabContents.length; i++) {
+					tabContents[i].style.display = "none";
+					tabButtons[i].classList.remove("active");
+				}
+
+				document.querySelector(
+					`#right-window${windowIndex} #tab${(windowIndex - 1) * 3 + tabIndex}`
+				).style.display = "block";
+				tabButtons[tabIndex - 1].classList.add("active");
+			}
+		</script>
+		<script>
+			const hamburgerIcon = document.querySelector(".hamburger-icon");
+			const navMenu = document.querySelector(".nav-menu");
+			const navItems = Array.from(document.querySelectorAll(".nav-item a"));
+
+			// Define a function to handle the clicking of nav items
+			function handleNavItemClick(event) {
+				if (event.target.classList.contains("dropdown-trigger")) {
+					return;
+				}
+
+				navItems.forEach((item) => {
+					item.classList.remove("current-slide");
+					item.classList.remove("current-vertical-slide");
+				});
+
+				const currentNavItem = event.target;
+				currentNavItem.classList.add("current-slide");
+
+				const parentNavItem = currentNavItem.closest(".nav-item");
+				const dropdown = parentNavItem.querySelector(".dropdown");
+				if (dropdown) {
+					document
+						.querySelectorAll(".nav-menu.dropdown.active")
+						.forEach((activeDropdown) => {
+							if (activeDropdown !== dropdown) {
+								activeDropdown.classList.remove("active");
+							}
+						});
+					dropdown.classList.add("active");
+				} else {
+					document
+						.querySelectorAll(".nav-menu.dropdown.active")
+						.forEach((activeDropdown) => {
+							activeDropdown.classList.remove("active");
+						});
+				}
+			}
+
+			// Apply the event listener function to all nav items
+			navItems.forEach((navItem) => {
+				navItem.addEventListener("click", handleNavItemClick);
+			});
+
+			// Open/Close navbar when hamburgerIcon/closeMenu are clicked
+			hamburgerIcon.addEventListener("click", () => {
+				navMenu.classList.toggle("open");
+			});
+
+			const closeMenu = document.querySelector(".close-menu");
+			closeMenu.addEventListener("click", () => {
+				navMenu.classList.remove("open");
+			});
+
+			// Toggle open state of dropdowns
+			const dropdownTriggers = Array.from(
+				document.querySelectorAll(".nav-item")
+			);
+			dropdownTriggers.forEach((trigger) => {
+				trigger.addEventListener("click", (event) => {
+					event.stopPropagation();
+					const dropdown = trigger.querySelector(".dropdown");
+					const triggerLink = trigger.querySelector(".dropdown-trigger");
+
+					if (dropdown && triggerLink) {
+						dropdown.classList.toggle("open");
+						triggerLink.classList.toggle("open");
+					}
+				});
+			});
+		</script>
+		<script>
+			var images = document.querySelectorAll(".carousel-image");
+			var currentIndex = 0;
+
+			document
+				.getElementById("carousel-next")
+				.addEventListener("click", function () {
+					images[currentIndex].style.display = "none";
+					currentIndex = (currentIndex + 1) % images.length;
+					images[currentIndex].style.display = "block";
+				});
+
+			document
+				.getElementById("carousel-prev")
+				.addEventListener("click", function () {
+					images[currentIndex].style.display = "none";
+					currentIndex = (currentIndex - 1 + images.length) % images.length;
+					images[currentIndex].style.display = "block";
+				});
+		</script>
+		<script>
+			// Get all the grid-item elements
+			let gridItems = document.getElementsByClassName("grid-item");
+
+			// Add click event listeners to each grid-item
+			for (let i = 0; i < gridItems.length; i++) {
+				gridItems[i].addEventListener("click", function () {
+					// Get the description from the clicked item's data-desc attribute
+					let desc = this.getAttribute("data-desc");
+
+					// Update the description div with the new description
+					document.getElementById("description").textContent = desc;
+				});
+			}
+		</script>
+		<script
+			src="https://kit.fontawesome.com/108c71d766.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
