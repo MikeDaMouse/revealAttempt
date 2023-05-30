@@ -131,7 +131,6 @@ body {
 .popup {
 	display: none;
 	max-height: 0px;
-
 	overflow: hidden;
 	position: absolute;
 	z-index: 1;
@@ -153,6 +152,7 @@ body {
 	padding: 5px;
 	color: #333;
 	text-decoration: none;
+	padding-bottom: 3px;
 }
 
 .popup-content a:hover {
@@ -221,13 +221,7 @@ body {
 .grid-item {
 	text-align: center;
 }
-.slideV {
-	height: 100vh;
-	background-color: hsl(0, 0%, 100%, 0.8) /* hsl(180, 15%, 20%, 0.5) */;
-}
-.slideH {
-	background-color: hsl(0, 0%, 100%, 0.8);
-}
+
 p {
 	font-size: 20px;
 }
@@ -247,7 +241,7 @@ p {
 }
 
 .right-window {
-	width: 100%;
+	width: 60vw;
 	height: 100%;
 	display: none;
 
