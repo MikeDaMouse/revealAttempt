@@ -22,313 +22,187 @@
 		<link rel="stylesheet" href="../dist/reset.css" />
 		<link rel="stylesheet" href="../dist/reveal.css" />
 		<link rel="stylesheet" href="../dist/theme/white-contrast.css" id="theme" />
+		<link rel="stylesheet" href="../dist/fullscreen.css" />
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="../plugin/highlight/monokai.css" />
-		<style>
-			.gridContainer {
-				position: absolute;
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				grid-template-rows: repeat(3, 1fr);
-				gap: 10px;
-				height: 100vh;
-				width: 100vw;
-				padding: 5px;
-			}
-			.grid-container {
-				display: grid;
-				grid-template-columns: repeat(3, 1fr);
-				grid-gap: 10px;
-			}
-			.grid-item {
-				text-align: center;
-			}
-			.slideV {
-				height: 100vh;
-				background-color: hsl(0, 0%, 100%, 0.8) /* hsl(180, 15%, 20%, 0.5) */;
-			}
-			.slideH {
-				background-color: hsl(0, 0%, 100%, 0.8);
-			}
-			p {
-				font-size: 20px;
-			}
-			.team {
-				border-radius: 50%;
-				height: 100px;
-				width: 100px;
-				margin: 0px;
-				border: 1px solid purple;
-			}
-			.selected {
-				border: 1px solid white;
-			}
-			.team:hover {
-				cursor: pointer;
-				border-color: white;
-			}
-
-			.right-window {
-				width: 100%;
-				height: 100%;
-				display: none;
-
-				overflow: auto;
-			}
-			.tab-content {
-				display: none;
-			}
-			.tab-button {
-				display: inline-block;
-				padding: 8px 16px;
-				cursor: pointer;
-			}
-			.tab-button:hover {
-				background-color: #ddd;
-			}
-			.tab-button.active {
-				background-color: #ccc;
-			}
-
-			.hamburger-icon {
-				position: fixed;
-				top: 10px;
-				left: 10px;
-				font-size: 30px;
-				cursor: pointer;
-				z-index: 999;
-				color: #fff;
-			}
-			.nav-menu {
-				position: fixed;
-				top: 0;
-				left: -250px;
-				width: 250px;
-				height: 100%;
-				background-color: white;
-				overflow: auto;
-				transition: left 0.3s;
-				z-index: 1000;
-			}
-			.nav-menu.open {
-				left: 0;
-			}
-			.nav-menu ul {
-				list-style-type: none;
-				margin: 0;
-				padding: 0;
-				margin-top: 30px;
-			}
-			.nav-menu li {
-				padding: 12px 16px;
-			}
-			.nav-menu li a {
-				color: black;
-				text-decoration: none;
-				display: block;
-			}
-
-			.nav-menu .dropdown {
-				max-height: 0;
-				overflow: hidden;
-				transition: max-height 0.3s ease-in-out;
-			}
-			.nav-menu .dropdown.open {
-				max-height: 300px;
-			}
-			.nav-menu .dropdown li {
-				padding-left: 32px;
-			}
-			.nav-menu .dropdown-trigger {
-				cursor: pointer;
-				position: relative;
-			}
-			.nav-menu .dropdown-trigger::after {
-				content: "▼";
-				position: absolute;
-				top: 50%;
-				right: 10px;
-				transform: translateY(-50%);
-				transition: transform 0.3s ease-in-out;
-			}
-			.nav-menu .dropdown-trigger.open::after {
-				transform: translateY(-50%) rotate(180deg);
-			}
-			.nav-menu .close-menu {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				font-size: 20px;
-				cursor: pointer;
-			}
-			.nav-menu .current-vertical-slide {
-				background-color: #777;
-			}
-			.nav-menu .dropdown.active {
-				max-height: 300px;
-			}
-			#carousel {
-				max-height: 80vh;
-				max-width: 80vw;
-				position: relative;
-				overflow: hidden;
-				border-radius: 10px;
-			}
-
-			.carousel-images {
-				width: 100%;
-				padding-left: 25px;
-			}
-
-			.carousel-image {
-				width: 100%;
-				display: none;
-			}
-
-			.carousel-image:first-child {
-				display: block;
-			}
-
-			#carousel-prev,
-			#carousel-next {
-				position: absolute;
-				top: 50%;
-				transform: translateY(-50%);
-				font-size: 1.5rem;
-				border: none;
-			}
-
-			#carousel-prev {
-				left: 10px;
-			}
-
-			#carousel-next {
-				right: 10px;
-			}
-		</style>
+		<link rel="stylesheet" href="example.css" />
 	</head>
 	<body>
-		<div class="hamburger-icon">
-			<img src="../media/Canari Structure.png" />
+		<div id="mySidenav" class="sidenav">
+			<!-- <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+				>&times;</a
+			> -->
+			<div class="menu-item">
+				<a class="main-item" onclick="toggleDropdown('navDropdown')"
+					>Navigation <i class="chevron fas fa-chevron-right"></i
+				></a>
+				<div id="navDropdown" class="dropdown-content">
+					<a href="#">Start</a>
+					<a href="#/2">Confidentiality</a>
+					<a href="#/3">Executive Summary</a>
+					<a href="#/4">Property Overview</a>
+					<a href="#/5">Market Analysis</a>
+					<a href="#/6">Risk Analysis</a>
+					<a href="#/7">Financial Projections</a>
+					<a href="#/9">Our Team</a>
+				</div>
+			</div>
+			<hr />
+			<div class="menu-item">
+				<a class="main-item" onclick="toggleDropdown('bankDropdown')"
+					>Data Bank <i class="chevron fas fa-chevron-right"></i
+				></a>
+				<div id="bankDropdown" class="dropdown-content">
+					<div class="icon-grid">
+						<div class="icon-item">
+							<i class="fas fa-file-word" onclick="showPopup('wordPopup')"></i>
+							<div id="wordPopup" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+						<div class="icon-item">
+							<i
+								class="fas fa-file-excel"
+								onclick="showPopup('excelPopup')"
+							></i>
+							<div id="excelPopup" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+						<!-- Add two more items similar to the above -->
+						<div class="icon-item">
+							<i
+								class="fas fa-file-excel"
+								onclick="showPopup('excelPopup2')"
+							></i>
+							<div id="excelPopup2" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+						<div class="icon-item">
+							<i
+								class="fas fa-file-excel"
+								onclick="showPopup('excelPopup3')"
+							></i>
+							<div id="excelPopup3" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr />
+			<div class="menu-item">
+				<a class="main-item" onclick="toggleDropdown('disclaimerDropdown')"
+					>Disclaimer <i class="chevron fas fa-chevron-right"></i
+				></a>
+				<div id="disclaimerDropdown" class="dropdown-content">
+					<p>
+						This memorandum by ABC Realty presents a potential commercial real
+						estate investment opportunity and is provided for your
+						consideration. It is not an offer to sell or solicit an offer to buy
+						any security. The actual offer or solicitation will be made through
+						a confidential private offering memorandum that includes important
+						information and risk factors. The information in this memorandum is
+						based on reliable sources but neither ABC Realty nor its affiliates
+						make any representations or warranties regarding its accuracy or
+						completeness.
+					</p>
+				</div>
+			</div>
 		</div>
-		<div class="nav-menu">
-			<ul>
-				<li class="nav-item">
-					<a class="current-slide dropdown-trigger">NAVIGATION</a>
-					<ul class="dropdown">
-						<hr />
-						<li><a href="#">Start</a></li>
-						<hr />
-						<li><a href="#/2">Confidentiality</a></li>
-						<hr />
-						<li><a href="#/3">Executive Summary</a></li>
-						<hr />
-						<li><a href="#/4">Property Overview</a></li>
-						<hr />
-						<li><a href="#/5">Market Analysis</a></li>
-						<hr />
-						<li><a href="#/6">Risk Analysis</a></li>
-						<hr />
-						<li><a href="#/7">Financial Projections</a></li>
-						<hr />
-						<li><a href="#/9">Our Team</a></li>
-					</ul>
-				</li>
-				<li class="nav-item">
-					<a class="dropdown-trigger">DISCLAIMER</a>
-					<ul class="dropdown">
-						<p style="padding-bottom: 10px; font-size: 15px">
-							This memorandum by ABC Realty presents a potential commercial real
-							estate investment opportunity and is provided for your
-							consideration. It is not an offer to sell or solicit an offer to
-							buy any security. The actual offer or solicitation will be made
-							through a confidential private offering memorandum that includes
-							important information and risk factors. The information in this
-							memorandum is based on reliable sources but neither ABC Realty nor
-							its affiliates make any representations or warranties regarding
-							its accuracy or completeness.
-						</p>
-					</ul>
-				</li>
-				<!-- Add more slides here -->
-			</ul>
-			<div class="close-menu">&times;</div>
+		<div class="hamburger" onclick="toggleNav()">
+			<div></div>
+			<div></div>
+			<div></div>
 		</div>
 		<div class="reveal">
 			<div class="slides">
-				<section>
+				<section data-name="First">
 					<div>
 						<img src="../media/canariLOGO-removebg-preview.png" alt="" />
 					</div>
 				</section>
-				<section>
-					<div class="gridContainer">
-						<div class="slideV">
-							<h2>Oakwood Residences</h2>
-							<h5>123 Elm Street, Springfield, USA</h5>
-							<p>
-								A stunning, modern multi-family apartment complex in the heart
-								of Springfield.
-							</p>
-							<video data-autoplay src="../Bike.mp4"></video>
-						</div>
-					</div>
+				<section id="typewrite-section-1">
+					<!-- <div class="gridContainer"> -->
+					<!-- <div class="slideV"> -->
+					<h2 class="typewrite" data-text="Oakwood Residences"></h2>
+					<h5>123 Elm Street, Springfield, USA</h5>
+					<p>
+						A stunning, modern multi-family apartment complex in the heart of
+						Springfield.
+					</p>
+					<video data-autoplay src="../Bike.mp4"></video>
+					<!-- </div> -->
+					<!-- </div> -->
+				</section>
+				<section id="typewrite-section-2">
+					<!-- <div class="slideH"> -->
+					<h2 class="typewrite" data-text="CONFIDENTIALITY"></h2>
+					<p>
+						This presentation is intended for the exclusive use of the recipient
+						and may not be reproduced, distributed, or otherwise disclosed
+						without the express written consent of the presenting party. The
+						information contained herein is believed to be accurate but should
+						be independently verified by the recipient.
+					</p>
+					<!-- </div> -->
 				</section>
 				<section>
-					<div class="slideH">
-						<h2>CONFIDENTIALITY</h2>
-						<p>
-							This presentation is intended for the exclusive use of the
-							recipient and may not be reproduced, distributed, or otherwise
-							disclosed without the express written consent of the presenting
-							party. The information contained herein is believed to be accurate
-							but should be independently verified by the recipient.
-						</p>
-					</div>
-				</section>
-				<section>
-					<div class="slideH">
-						<h2>EXECUTIVE SUMMARY</h2>
-						<p>
-							We are pleased to present an investment opportunity in a 399-unit
-							multifamily property located in Boston, Massachusetts. The
-							property is situated in a highly desirable location with strong
-							demand for rental units, making it an attractive investment
-							opportunity for both experienced and first-time investors.
-						</p>
-						<p>
-							The property is a Class A apartment complex that offers a mix of
-							studio, one-, and two-bedroom units, with spacious floor plans and
-							modern amenities. The property is well-maintained and in excellent
-							condition, with recent upgrades to common areas and unit
-							interiors. The property benefits from its prime location in a
-							rapidly growing neighborhood with access to public transportation,
-							major highways, and a variety of dining and entertainment options.
-							The area is known for its strong employment and educational
-							opportunities, making it a popular choice for young professionals
-							and families.
-						</p>
+					<!-- <div class="slideH"> -->
+					<h2>EXECUTIVE SUMMARY</h2>
+					<p>
+						We are pleased to present an investment opportunity in a 399-unit
+						multifamily property located in Boston, Massachusetts. The property
+						is situated in a highly desirable location with strong demand for
+						rental units, making it an attractive investment opportunity for
+						both experienced and first-time investors.
+					</p>
+					<p>
+						The property is a Class A apartment complex that offers a mix of
+						studio, one-, and two-bedroom units, with spacious floor plans and
+						modern amenities. The property is well-maintained and in excellent
+						condition, with recent upgrades to common areas and unit interiors.
+						The property benefits from its prime location in a rapidly growing
+						neighborhood with access to public transportation, major highways,
+						and a variety of dining and entertainment options. The area is known
+						for its strong employment and educational opportunities, making it a
+						popular choice for young professionals and families.
+					</p>
 
-						<p>
-							The investment opportunity includes the acquisition of the
-							property at an attractive price point with potential for value-add
-							opportunities through operational efficiencies, targeted upgrades,
-							and rental increases. The property has a strong historical
-							occupancy and rent growth rate, and we anticipate continued strong
-							demand for rental units in the area.
-						</p>
-					</div>
+					<p>
+						The investment opportunity includes the acquisition of the property
+						at an attractive price point with potential for value-add
+						opportunities through operational efficiencies, targeted upgrades,
+						and rental increases. The property has a strong historical occupancy
+						and rent growth rate, and we anticipate continued strong demand for
+						rental units in the area.
+					</p>
+					<!-- </div> -->
 				</section>
 				<section>
-					<section>
+					<section data-auto-animate>
 						<div class="slideH">
-							<h1 class="r-fit-text">PROPERTY OVERVIEW</h1>
+							<h1 data-id="title" class="r-fit-text">PROPERTY OVERVIEW</h1>
 						</div>
 					</section>
-					<section>
+					<section data-auto-animate>
 						<div class="slideH">
-							<h2>PROPERTY OVERVIEW</h2>
+							<h1 data-id="title" class="r-fit-text">PROPERTY OVERVIEW</h1>
 							<div style="display: grid; grid-template-columns: 2fr 1fr 2fr">
 								<p>
 									We are pleased to present an investment opportunity in a
@@ -451,39 +325,7 @@
 							</div>
 						</div>
 					</section>
-					<section>
-						<div id="carousel" class="slideH">
-							<div class="carousel-images">
-								<img
-									src="https://cdn.decorilla.com/online-decorating/wp-content/uploads/2018/10/modern-living-room-neutral-walls.jpg"
-									class="carousel-image"
-								/>
-								<img
-									src="https://th.bing.com/th/id/OIP.W_T-YH9LW4A9E9wEUmvbeAHaFP?pid=ImgDet&rs=1"
-									class="carousel-image"
-								/>
-								<img
-									src="https://us.amara.com/luxpad/wp-content/uploads/2017/01/26331516806_418a17ab41_o-min.jpg"
-									class="carousel-image"
-								/>
-								<img
-									src="https://th.bing.com/th/id/OIP.cHlKSZvxIHRlIN7LP81tCgHaFj?pid=ImgDet&w=1920&h=1440&rs=1"
-									class="carousel-image"
-								/>
-								<img
-									src="https://images.designtrends.com/wp-content/uploads/2015/12/30094405/Top-BedRoom-Design-For-Royal-Look.jpeg"
-									class="carousel-image"
-								/>
-								<!-- Add more images as needed -->
-							</div>
-							<div id="carousel-prev">
-								<i class="fa-solid fa-chevron-left"></i>
-							</div>
-							<div id="carousel-next">
-								<i class="fa-solid fa-chevron-right"></i>
-							</div>
-						</div>
-					</section>
+
 					<section
 						data-preload
 						data-background-iframe="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
@@ -537,6 +379,23 @@
 							</ul>
 						</div>
 					</section>
+				</section>
+				<section>
+					<section
+						data-background-image="https://cdn.decorilla.com/online-decorating/wp-content/uploads/2018/10/modern-living-room-neutral-walls.jpg"
+					></section>
+					<section
+						data-background-image="https://th.bing.com/th/id/OIP.W_T-YH9LW4A9E9wEUmvbeAHaFP?pid=ImgDet&rs=1"
+					></section>
+					<section
+						data-background-image="https://us.amara.com/luxpad/wp-content/uploads/2017/01/26331516806_418a17ab41_o-min.jpg"
+					></section>
+					<section
+						data-background-image="https://th.bing.com/th/id/OIP.cHlKSZvxIHRlIN7LP81tCgHaFj?pid=ImgDet&w=1920&h=1440&rs=1"
+					></section>
+					<section
+						data-background-image="https://images.designtrends.com/wp-content/uploads/2015/12/30094405/Top-BedRoom-Design-For-Royal-Look.jpeg"
+					></section>
 				</section>
 				<section>
 					<div class="slideH">
@@ -710,7 +569,7 @@
 						</table>
 					</div>
 				</section>
-				<section data-auto-animate data-background-color="aquamarine">
+				<section data-auto-animate>
 					<h2>OUR TEAM</h2>
 					<div
 						style="
@@ -742,8 +601,8 @@
 						</div>
 					</div>
 				</section>
-				<section data-auto-animate data-background-color="aquamarine">
-					<div class="gridContainer">
+				<section data-auto-animate>
+					<div class="gridContainer" style="width: 100vw">
 						<div
 							style="
 								display: flex;
@@ -881,66 +740,31 @@
 		<script src="../plugin/notes/notes.js"></script>
 		<script src="../plugin/search/search.js"></script>
 		<script src="../plugin/highlight/highlight.js"></script>
+		<script src="../plugin/fullscreen.js"></script>
+
 		<script>
 			// Also available as an ES module, see:
 			// https://revealjs.com/initialization/
 			Reveal.initialize({
 				controls: true,
-				progress: true,
 				center: true,
 				hash: true,
-				parallaxBackgroundImage:
-					"https://wallpaperboat.com/wp-content/uploads/2020/10/23/57974/real-estate-01.jpg",
-				parallaxBackgroundSize: "2000px 2000px",
-				parallaxBackgroundHorizontal: 25,
-				parallaxBackgroundVertical: 10,
 				progress: false,
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [RevealZoom, RevealNotes, RevealSearch, RevealHighlight],
+				plugins: [
+					RevealZoom,
+					RevealNotes,
+					RevealSearch,
+					RevealHighlight,
+					RevealFullscreen,
+				],
 			});
 		</script>
-		<script>
-			function openRightWindow(windowIndex) {
-				let rightWindows = document.getElementsByClassName("right-window");
-				let people = document.getElementsByClassName("test");
 
-				for (let i = 0; i < rightWindows.length; i++) {
-					rightWindows[i].style.display = "none";
-				}
-
-				// Remove 'selected' class from all 'test' divs
-				for (let i = 0; i < people.length; i++) {
-					people[i].classList.remove("selected");
-				}
-
-				// Add 'selected' class to selected div
-				document.getElementById(`div${windowIndex}`).classList.add("selected");
-
-				document.getElementById(`right-window${windowIndex}`).style.display =
-					"block";
-				openTab(windowIndex, 1);
-			}
-
-			function openTab(windowIndex, tabIndex) {
-				let tabContents = document.querySelectorAll(
-					`#right-window${windowIndex} .tab-content`
-				);
-				let tabButtons = document.querySelectorAll(
-					`#right-window${windowIndex} .tab-button`
-				);
-
-				for (let i = 0; i < tabContents.length; i++) {
-					tabContents[i].style.display = "none";
-					tabButtons[i].classList.remove("active");
-				}
-
-				document.querySelector(
-					`#right-window${windowIndex} #tab${(windowIndex - 1) * 3 + tabIndex}`
-				).style.display = "block";
-				tabButtons[tabIndex - 1].classList.add("active");
-			}
-		</script>
+		<script
+			src="https://kit.fontawesome.com/108c71d766.js"
+			crossorigin="anonymous"
+		></script>
 		<script>
 			const hamburgerIcon = document.querySelector(".hamburger-icon");
 			const navMenu = document.querySelector(".nav-menu");
@@ -1012,44 +836,6 @@
 				});
 			});
 		</script>
-		<script>
-			var images = document.querySelectorAll(".carousel-image");
-			var currentIndex = 0;
-
-			document
-				.getElementById("carousel-next")
-				.addEventListener("click", function () {
-					images[currentIndex].style.display = "none";
-					currentIndex = (currentIndex + 1) % images.length;
-					images[currentIndex].style.display = "block";
-				});
-
-			document
-				.getElementById("carousel-prev")
-				.addEventListener("click", function () {
-					images[currentIndex].style.display = "none";
-					currentIndex = (currentIndex - 1 + images.length) % images.length;
-					images[currentIndex].style.display = "block";
-				});
-		</script>
-		<script>
-			// Get all the grid-item elements
-			let gridItems = document.getElementsByClassName("grid-item");
-
-			// Add click event listeners to each grid-item
-			for (let i = 0; i < gridItems.length; i++) {
-				gridItems[i].addEventListener("click", function () {
-					// Get the description from the clicked item's data-desc attribute
-					let desc = this.getAttribute("data-desc");
-
-					// Update the description div with the new description
-					document.getElementById("description").textContent = desc;
-				});
-			}
-		</script>
-		<script
-			src="https://kit.fontawesome.com/108c71d766.js"
-			crossorigin="anonymous"
-		></script>
+		<script src="example.js"></script>
 	</body>
 </html>
