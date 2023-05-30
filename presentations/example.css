@@ -149,10 +149,9 @@ body {
 
 .popup-content a {
 	display: block;
-	padding: 5px;
+	padding: 3px;
 	color: #333;
 	text-decoration: none;
-	padding-bottom: 3px;
 }
 
 .popup-content a:hover {
