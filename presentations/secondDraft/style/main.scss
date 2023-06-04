@@ -1,0 +1,487 @@
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+.gridContainer {
+	height: 94svh;
+	width: 94svw;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: 0.3fr 1fr 1fr 1fr;
+
+	position: relative;
+	overflow: hidden;
+	margin: auto;
+	margin-top: 3svh;
+	gap: 2%;
+}
+.title {
+	font-size: 3rem;
+	grid-column: 1/5;
+	grid-row: 3;
+}
+.slideTitle {
+	font-size: 3rem;
+	grid-row: 1;
+	grid-column: 1/5;
+	text-align: center;
+	white-space: nowrap;
+}
+.info {
+	font-size: 3vmin;
+	grid-area: 2/1/5/3;
+}
+
+#overviewInfo {
+	grid-column: 1/3;
+	grid-row: 2/3;
+	justify-self: center;
+	align-self: start;
+
+	.overviewTable {
+		/* border: none; */
+		width: 100%;
+
+		font-size: 1rem;
+
+		th,
+		td {
+			border: none;
+		}
+	}
+}
+.hamburger {
+	margin-top: 2.5svh;
+	margin-left: 2.5svh;
+	width: 30px;
+	height: 22px;
+	position: fixed;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	z-index: 3;
+	transform: translateX(0px);
+	transition: transform 1s ease-in-out;
+	div {
+		width: 100%;
+		height: 3px;
+		background-color: #333;
+		transition: all 1s ease-in-out;
+	}
+}
+.hamburger.open {
+	transform: translateX(150px);
+}
+.hamburger.open div:first-child {
+	transform: rotate(-30deg) translateY(2.3px) translateX(-7.5px);
+	top: 12px;
+	width: 60%;
+}
+
+.hamburger.open div:nth-child(3) {
+	transform: rotate(30deg) translateY(-2.3px) translateX(-7.5px);
+	top: 12px;
+	width: 60%;
+}
+
+.sidenav {
+	height: 100svh;
+	overflow: hidden;
+	width: 250px;
+	transform: translateX(-260px);
+	position: fixed;
+	z-index: 3;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: transform 1s ease;
+	padding-top: 60px;
+
+	a {
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 20px;
+		color: black;
+		display: block;
+		transition: 0.3s;
+		cursor: pointer;
+		opacity: 0;
+		transition: opacity 1s;
+		&:hover {
+			color: purple;
+		}
+	}
+	#contentHeader:hover {
+		color: black;
+		cursor: context-menu;
+	}
+	.icon-grid {
+		opacity: 0;
+		transition: opacity 1s, transform 1s;
+		transform: translateX(-400px);
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		.icon-item {
+			width: 48%;
+			text-align: center;
+			padding: 30px;
+			box-sizing: border-box;
+			position: relative;
+			transition: opacity 0.5s;
+			i:hover {
+				box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+				cursor: pointer;
+			}
+		}
+		.popup {
+			display: none;
+			max-height: 0px;
+			overflow: hidden;
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 50%;
+			background-color: #fff;
+			color: #333;
+			text-align: center;
+			border-radius: 6px;
+			padding: 8px 0;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			transition: max-height 0.6s;
+			a {
+				display: block;
+				padding: 3px;
+				color: #333;
+				text-decoration: none;
+				&:hover {
+					color: purple;
+				}
+			}
+		}
+	}
+	hr {
+		opacity: 0;
+		transform: translateX(-500px);
+		transition: opacity 1s, transform 1s;
+	}
+	.menu-item {
+		position: relative;
+	}
+	.dropdown-content {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.5s ease-in-out;
+		a {
+			font-size: 16px;
+			color: #818181;
+		}
+		p {
+			padding: 8px 8px 8px 32px;
+			font-size: 16px;
+			color: #818181;
+		}
+	}
+	.disclaimerContainer {
+		height: 40vmin;
+		overflow-y: scroll;
+	}
+	#navDropdown a {
+		font-size: 15px;
+		color: #818181;
+		cursor: pointer;
+		&:hover {
+			color: purple;
+		}
+	}
+	.chevron {
+		transition: transform 0.3s ease;
+	}
+}
+.sidenav.open {
+	transform: translateX(0px);
+	transition: transform 1s ease;
+	a {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	p {
+		opacity: 1;
+		transform: translateX(0);
+	}
+	.icon-grid {
+		opacity: 1;
+		transform: translateX(0);
+		transition: opacity 0.5s, transform 0.5s;
+	}
+	hr {
+		opacity: 1;
+		transform: translateX(0);
+		/* transition: opacity 1s, transform 1s; */
+	}
+}
+
+.slideshowContainer {
+	position: relative;
+	/* 	background-color: hsl(0, 0%, 0%, 0.1); */
+	border-radius: 15px;
+	grid-area: 3/1/5/3;
+	overflow: hidden;
+}
+.slideshow-container {
+	position: relative;
+	display: flex;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	scroll-snap-type: x mandatory;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+	height: 100%;
+	width: 100%;
+
+	transition: opacity 0.5s ease;
+
+	scrollbar-width: none;
+}
+.slideshow-container::-webkit-scrollbar {
+	display: none;
+}
+.slide-wrapper {
+	flex: 0 0 auto;
+	width: 100%;
+	height: 100%;
+	scroll-snap-align: start;
+	scroll-snap-stop: always;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-right: 0;
+	border-radius: 15px;
+}
+.slide {
+	object-fit: cover;
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+}
+.arrow {
+	z-index: 9999;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+
+	transform: translateY(-50%);
+	padding: 2%;
+	color: gold;
+	font-weight: bold;
+	font-size: 1.5rem;
+	transition: 0.6s ease;
+	border-radius: 50%;
+}
+.arrow-left {
+	left: 2%;
+}
+.arrow-right {
+	right: 2%;
+}
+.arrow:hover {
+	color: yellow;
+}
+
+.streetView {
+	grid-area: 2/3/5/5;
+	align-self: stretch;
+	align-self: end;
+	justify-self: stretch;
+	justify-self: center;
+	height: 100%;
+	width: 100%;
+	border-radius: 15px;
+
+	#map {
+		border-radius: 15px;
+	}
+}
+.featureGrid {
+	grid-area: 3/1/5/5;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+.feature {
+	color: purple;
+	font-size: 4vmin;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.label {
+	margin-top: 10px;
+}
+
+.dialog {
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+	/* max-width: 200px; */
+	position: absolute;
+	z-index: 10;
+	display: none;
+	padding: 5%;
+	padding-bottom: 1%;
+	background-color: white;
+	transform: translateX(-50%);
+	left: 50%;
+	bottom: 100%;
+	margin-bottom: 10px;
+	font-size: 1rem;
+	transition: height 1s ease-in-out;
+	width: 20vmin;
+}
+.dialog.open {
+	height: auto;
+}
+
+.dialog::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -10px;
+	border-width: 10px;
+	border-style: solid;
+	border-color: white transparent transparent transparent;
+}
+.close-dialog {
+	position: absolute;
+	top: 1%;
+	right: 1%;
+	background: none;
+	border: none;
+	font-size: 18px;
+	cursor: pointer;
+}
+
+#marketAnalysisSlides {
+	grid-area: 2/3/5/5;
+}
+.businessPlan {
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		margin-bottom: 2em;
+		font-size: 1rem;
+	}
+
+	h2 {
+		background-color: #ffdab9; /* Dark Peach */
+		padding: 15px;
+		color: black;
+		text-align: left;
+		font-size: 1.5rem;
+	}
+
+	td,
+	th {
+		padding: 15px;
+		text-align: left;
+	}
+
+	tr:nth-child(even) {
+		background-color: #ffefd5; /* Light Peach */
+	}
+
+	tr:nth-child(odd) {
+		background-color: #ffffff; /* White */
+	}
+}
+#businessPlanSlides {
+	grid-area: 2/3/5/5;
+}
+@media screen and (max-width: 800px) and (min-width: 480px) {
+	.gridContainer {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: 0.3fr, 1fr, 1fr;
+		overflow-y: scroll;
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		#overviewInfo {
+			grid-row: 2/3;
+			grid-column: 1/3;
+		}
+		.slideshowContainer {
+			grid-row: 3/4;
+			grid-column: 2/3;
+		}
+		.streetView {
+			grid-row: 3/4;
+			grid-column: 1/2;
+		}
+	}
+	.dialog {
+		font-size: 0.7rem;
+		width: 30vmin;
+	}
+}
+@media screen and (max-width: 480px) {
+	.gridContainer {
+		display: grid;
+		grid-template-columns: 1fr;
+		/* margin-top: 1.8svh;
+		margin-bottom: 4.2svh;
+		margin-left: 1.8svw;
+		margin-right: 4.2sw; */
+		justify-content: center;
+	}
+	.title {
+		grid-column: 1;
+	}
+	.slideTitle {
+		font-size: 2.5rem;
+		grid-column: 1;
+	}
+	#overviewInfo,
+	.slideshowContainer,
+	.streetView {
+		grid-column: 1;
+		grid-row: auto;
+		font-size: 0.8rem;
+		max-height: 50vmin;
+	}
+	.hamburger div:nth-child(3) {
+		opacity: 0;
+	}
+	.hamburger.open div:nth-child(3) {
+		transform: rotate(30deg) translateY(-2.3px) translateX(-7.5px);
+		top: 12px;
+		width: 60%;
+		opacity: 1;
+	}
+	.featureGrid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.dialog {
+		font-size: 0.7rem;
+		width: 30vmin;
+	}
+	.info {
+		grid-column: 1/2;
+		grid-row: 2/3;
+	}
+	#marketAnalysisSlides {
+		grid-area: 3/1/5/2;
+		align-self: start;
+		align-self: stretch;
+	}
+}

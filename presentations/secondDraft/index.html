@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link rel="stylesheet" href="../../dist/reveal.css" />
+		<link rel="stylesheet" href="../../dist/theme/white.css" />
+		<link rel="stylesheet" href="./style/main.css" />
+		<meta charset="UTF-8" />
+		<link
+			rel="stylesheet"
+			href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+			integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+			crossorigin=""
+		/>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>secondDraft</title>
+		<script
+			src="https://kit.fontawesome.com/108c71d766.js"
+			crossorigin="anonymous"
+		></script>
+	</head>
+	<body>
+		<div id="mySidenav" class="sidenav">
+			<div class="menu-item">
+				<a class="main-item" id="contentHeader">Content</a>
+				<div id="navDropdown">
+					<a href="#">Start</a>
+					<a href="#/2">Confidentiality</a>
+					<a href="#/3">Executive Summary</a>
+					<a href="#/4">Property Overview</a>
+					<a href="#/5">Market Analysis</a>
+					<a href="#/6">Risk Analysis</a>
+					<a href="#/7">Financial Projections</a>
+					<a href="#/9">Our Team</a>
+				</div>
+			</div>
+			<hr />
+			<div class="menu-item">
+				<a class="main-item" onclick="toggleDropdown('bankDropdown')"
+					>Data Bank <i class="chevron fas fa-chevron-right"></i
+				></a>
+				<div id="bankDropdown" class="dropdown-content">
+					<div class="icon-grid">
+						<div class="icon-item">
+							<i class="fas fa-file-word" onclick="showPopup('wordPopup')"></i>
+							<div id="wordPopup" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+						<div class="icon-item">
+							<i
+								class="fas fa-file-excel"
+								onclick="showPopup('excelPopup')"
+							></i>
+							<div id="excelPopup" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+						<!-- Add two more items similar to the above -->
+						<div class="icon-item">
+							<i
+								class="fas fa-file-excel"
+								onclick="showPopup('excelPopup2')"
+							></i>
+							<div id="excelPopup2" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+						<div class="icon-item">
+							<i
+								class="fas fa-file-excel"
+								onclick="showPopup('excelPopup3')"
+							></i>
+							<div id="excelPopup3" class="popup">
+								<div class="popup-content">
+									<a href="#" onclick="event.stopPropagation();">View</a>
+									<a href="#" onclick="event.stopPropagation();">Download</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<hr />
+			<div class="menu-item">
+				<a class="main-item" onclick="toggleDropdown('disclaimerDropdown')"
+					>Disclaimer <i class="chevron fas fa-chevron-right"></i
+				></a>
+
+				<div id="disclaimerDropdown" class="dropdown-content">
+					<div class="disclaimerContainer">
+						<p>
+							This memorandum by ABC Realty presents a potential commercial real
+							estate investment opportunity and is provided for your
+							consideration. It is not an offer to sell or solicit an offer to
+							buy any security. The actual offer or solicitation will be made
+							through a confidential private offering memorandum that includes
+							important information and risk factors. The information in this
+							memorandum is based on reliable sources but neither ABC Realty nor
+							its affiliates make any representations or warranties regarding
+							its accuracy or completeness.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="hamburger" onclick="toggleNav()">
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<div class="gridContainer">
+						<header class="title">ATRIUM SHOPPING MALL</header>
+					</div>
+				</section>
+				<section>
+					<div class="gridContainer">
+						<header class="slideTitle">Property Overview</header>
+						<div id="overviewInfo">
+							<table class="overviewTable">
+								<tr>
+									<th>Units</th>
+									<td>399</td>
+								</tr>
+								<tr>
+									<th>Year Built</th>
+									<td>1999</td>
+								</tr>
+								<tr>
+									<th>Building Size</th>
+									<td>220,520 SF</td>
+								</tr>
+								<tr>
+									<th>Land Size</th>
+									<td>10.34 Acres</td>
+								</tr>
+								<tr>
+									<th>Stories</th>
+									<td>15</td>
+								</tr>
+								<tr>
+									<th>Average Unit SF</th>
+									<td>823</td>
+								</tr>
+							</table>
+						</div>
+
+						<div class="slideshowContainer">
+							<div class="slideshow-container">
+								<div class="slide-wrapper">
+									<img
+										class="slide"
+										src="https://th.bing.com/th/id/R.3eba1a068afa20f3caa5204a3559be30?rik=WxFifeU2D%2bHz0A&riu=http%3a%2f%2fwww.wallpapersin4k.org%2fwp-content%2fuploads%2f2017%2f04%2fReal-Estate-HD-Wallpapers-24.jpg&ehk=j4Ln6LHImx5mrANatc85qsCRordm9BfwPUj8Su8v1zc%3d&risl=&pid=ImgRaw&r=0"
+									/>
+								</div>
+								<div class="slide-wrapper">
+									<img
+										class="slide"
+										src="https://th.bing.com/th/id/R.3eba1a068afa20f3caa5204a3559be30?rik=WxFifeU2D%2bHz0A&riu=http%3a%2f%2fwww.wallpapersin4k.org%2fwp-content%2fuploads%2f2017%2f04%2fReal-Estate-HD-Wallpapers-24.jpg&ehk=j4Ln6LHImx5mrANatc85qsCRordm9BfwPUj8Su8v1zc%3d&risl=&pid=ImgRaw&r=0"
+									/>
+								</div>
+								<div class="slide-wrapper">
+									<img
+										class="slide"
+										src="https://th.bing.com/th/id/R.3eba1a068afa20f3caa5204a3559be30?rik=WxFifeU2D%2bHz0A&riu=http%3a%2f%2fwww.wallpapersin4k.org%2fwp-content%2fuploads%2f2017%2f04%2fReal-Estate-HD-Wallpapers-24.jpg&ehk=j4Ln6LHImx5mrANatc85qsCRordm9BfwPUj8Su8v1zc%3d&risl=&pid=ImgRaw&r=0"
+									/>
+								</div>
+								<div class="slide-wrapper">
+									<img
+										class="slide"
+										src="https://th.bing.com/th/id/R.3eba1a068afa20f3caa5204a3559be30?rik=WxFifeU2D%2bHz0A&riu=http%3a%2f%2fwww.wallpapersin4k.org%2fwp-content%2fuploads%2f2017%2f04%2fReal-Estate-HD-Wallpapers-24.jpg&ehk=j4Ln6LHImx5mrANatc85qsCRordm9BfwPUj8Su8v1zc%3d&risl=&pid=ImgRaw&r=0"
+									/>
+								</div>
+								<div class="slide-wrapper">
+									<img
+										class="slide"
+										src="https://th.bing.com/th/id/R.3eba1a068afa20f3caa5204a3559be30?rik=WxFifeU2D%2bHz0A&riu=http%3a%2f%2fwww.wallpapersin4k.org%2fwp-content%2fuploads%2f2017%2f04%2fReal-Estate-HD-Wallpapers-24.jpg&ehk=j4Ln6LHImx5mrANatc85qsCRordm9BfwPUj8Su8v1zc%3d&risl=&pid=ImgRaw&r=0"
+									/>
+								</div>
+								<div class="slide-wrapper">
+									<iframe
+										width="560"
+										height="315"
+										src="https://www.youtube.com/embed/B_n4YONte5A"
+										title="YouTube video player"
+										frameborder="0"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										allowfullscreen
+									></iframe>
+								</div>
+							</div>
+							<div class="arrow arrow-left">&#10094;</div>
+							<div class="arrow arrow-right">&#10095;</div>
+						</div>
+						<iframe
+							class="streetView"
+							src="https://www.google.com/maps/embed/v1/streetview?location=-33.8792,151.2739&key=AIzaSyBTLbGQbMgUjzPHw197063JiEEaCJ8W9_s"
+						></iframe>
+					</div>
+				</section>
+				<section>
+					<div class="gridContainer">
+						<div class="slideTitle">Property Overview</div>
+						<div class="featureGrid">
+							<div class="feature">
+								<i class="fas fa-chart-line"></i>
+								<span class="label">Occupancy</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>Strong occupancy and rent growth.</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-swimmer"></i>
+								<span class="label">Pool</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											Enjoy our well-maintained pool area. It's perfect for
+											relaxing or doing laps.
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-expand-arrows-alt"></i>
+								<span class="label">Spacious Units</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											Our units are spacious and comfortable, providing you with
+											a place you'll love to call home.
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-dumbbell"></i>
+								<span class="label">Gym</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											Stay fit with our state-of-the-art gym. It's equipped with
+											the latest equipment to help you achieve your fitness
+											goals.
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-tools"></i>
+								<span class="label">Maintenance</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											We offer 24-hour maintenance to all our residents. Your
+											comfort is our priority.
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-tshirt"></i>
+								<span class="label">W/D Units</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											All units come with washer/dryer. No more trips to the
+											laundromat!
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-bus"></i>
+								<span class="label">Public Transport</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											Easy access to public transport. Get to where you need to
+											go without the hassle of driving.
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+							<div class="feature">
+								<i class="fas fa-parking"></i>
+								<span class="label">Gated Parking</span>
+								<dialog class="dialog">
+									<div class="dialog-content">
+										<p>
+											We offer secure, gated parking to all our residents. Rest
+											assured knowing your car is safe.
+										</p>
+									</div>
+									<button class="close-dialog">&#10006;</button>
+								</dialog>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="gridContainer">
+						<div class="slideTitle">Market Analysis</div>
+						<p class="info">
+							Population of approximately 700,000 residents. Boston is home to
+							numerous world-class universities, hospitals, and biotech firms,
+							as well as a thriving financial services industry. Consistently
+							high occupancy rates and steady rent growth. According to the
+							Bureau of Labor Statistics, the unemployment rate in the
+							Boston-Cambridge-Newton metropolitan area was 2.7% as of March
+							2022 (the national average is 4.2%). The population of the city is
+							projected to grow by 4.6% between 2020 and 2025, according to a
+							report by Marcus & Millichap.
+						</p>
+						<div class="slideshowContainer" id="marketAnalysisSlides">
+							<div class="slideshow-container">
+								<div class="slide-wrapper">
+									<iframe
+										src="https://www.nationalgeographic.com/science/article/news-oldest-animal-drawing-borneo-cave-art-human-origins"
+										frameborder="0"
+										height="100%"
+										width="100%"
+									></iframe>
+								</div>
+								<div class="slide-wrapper">
+									<div class="slide" id="map"></div>
+								</div>
+							</div>
+							<div class="arrow arrow-left">&#10094;</div>
+							<div class="arrow arrow-right">&#10095;</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="gridContainer">
+						<div class="slideTitle">Business Plan</div>
+						<div class="businessPlan">
+							<h2>Sources & Uses</h2>
+							<table>
+								<tr>
+									<th>Purchase Price</th>
+									<td>$100,000,000</td>
+								</tr>
+								<tr>
+									<th>CapEx Budget</th>
+									<td>$10,000,000</td>
+								</tr>
+								<tr>
+									<th>Closing Costs</th>
+									<td>$2,000,000</td>
+								</tr>
+								<tr>
+									<th>Total Project Cost</th>
+									<td>$112,000,000</td>
+								</tr>
+								<tr>
+									<th>Senior Loan | 75% LTV</th>
+									<td>$75,000,000</td>
+								</tr>
+								<tr>
+									<th>Interest Rate</th>
+									<td>5.7%</td>
+								</tr>
+								<tr>
+									<th>GP Equity</th>
+									<td>$7,000,000</td>
+								</tr>
+								<tr>
+									<th>LP Equity</th>
+									<td>$30,000,000</td>
+								</tr>
+							</table>
+
+							<h2>Projected Returns</h2>
+							<table>
+								<tr>
+									<th>Hold Period</th>
+									<td>5 Years</td>
+								</tr>
+								<tr>
+									<th>Deal Level IRR</th>
+									<td>19%</td>
+								</tr>
+								<tr>
+									<th>Equity Multiple</th>
+									<td>2.1x</td>
+								</tr>
+								<tr>
+									<th>Average CoC</th>
+									<td>8.2%</td>
+								</tr>
+								<tr>
+									<th>YoC at Sale</th>
+									<td>8.0%</td>
+								</tr>
+							</table>
+						</div>
+						<div class="slideshowContainer" id="businessPlanSlides">
+							<div class="slideshow-container">
+								<div class="slide-wrapper">
+									<iframe
+										src="https://www.nationalgeographic.com/science/article/news-oldest-animal-drawing-borneo-cave-art-human-origins"
+										frameborder="0"
+										height="100%"
+										width="100%"
+									></iframe>
+								</div>
+								<div class="slide-wrapper">
+									<iframe
+										width="900"
+										height="800"
+										frameborder="0"
+										scrolling="no"
+										src="//plotly.com/~mishoel.lobel/1.embed"
+									></iframe>
+								</div>
+							</div>
+							<div class="arrow arrow-left">&#10094;</div>
+							<div class="arrow arrow-right">&#10095;</div>
+						</div>
+					</div>
+				</section>
+				<section>
+					<div class="gridContainer">
+						<div class="slideTitle">Business Plan</div>
+						<iframe
+							style="
+								border-radius: 15px;
+								box-shadow: 5px 10px 10px gray;
+								grid-column: 1/-1;
+								grid-row: 2/-1;
+								justify-self: stretch;
+							"
+							data-src="https://onedrive.live.com/embed?resid=4E823CBD7B101EBE%211518&authkey=%21AOUbbWDNIlkogQk&em=2&AllowTyping=True&wdDownloadButton=True&wdInConfigurator=True&wdInConfigurator=True&edesNext=false&resen=false&ed1JS=false"
+							frameborder="0"
+							data-preload
+						></iframe>
+					</div>
+				</section>
+			</div>
+		</div>
+		<script src="../../dist/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				disableLayout: true,
+			});
+		</script>
+
+		<script
+			src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+			crossorigin=""
+		></script>
+
+		<script src="./main.js"></script>
+	</body>
+</html>
