@@ -539,15 +539,13 @@
     align-self: start;
     align-self: stretch;
   }
-  #marketAnalysisSlides {
-    grid-area: 2/3/5/5;
-  }
   .businessPlan {
     grid-row: 2;
     overflow-y: scroll;
   }
   #businessPlanSlides {
-    grid-row: 3;
-    grid-column: 1;
+    grid-area: 3/1/5/2;
+    align-self: start;
+    align-self: stretch;
   }
 }/*# sourceMappingURL=main.css.map */
