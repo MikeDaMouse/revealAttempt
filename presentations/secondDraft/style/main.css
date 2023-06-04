@@ -16,9 +16,56 @@
 }
 
 .title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 3rem;
-  grid-column: 1/5;
-  grid-row: 3;
+  grid-column: 4/7;
+  grid-row: 2;
+  background-color: white;
+  text-align: center;
+}
+
+.titleGridContainer {
+  width: 100svw;
+  height: 100svh;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1%;
+}
+
+.tiles {
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.tiles:nth-child(1) {
+  grid-column: 5/7;
+  grid-row: 1;
+}
+.tiles:nth-child(2) {
+  grid-row: 1;
+  grid-column: 3/5;
+}
+.tiles:nth-child(3) {
+  grid-row: 1;
+  grid-column: 1;
+  justify-self: start;
+  width: 50%;
+}
+.tiles:nth-child(4) {
+  grid-row: 2;
+  grid-column: 1;
+  align-self: start;
+  justify-self: start;
+  width: 30%;
+  height: 50%;
+}
+.tiles:nth-child(5) {
+  grid-area: 3/1/4/3;
+}
+.tiles:nth-child(6) {
+  grid-area: 3/5/4/7;
 }
 
 .slideTitle {
