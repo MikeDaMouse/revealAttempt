@@ -63,8 +63,6 @@ function closeAllPopups() {
 
 //individual fullscreen
 document.addEventListener("DOMContentLoaded", (event) => {
-	let fullscreenElement = null;
-
 	// Add fullscreen button to each "fullscreen-capable" div
 	const fullscreenDivs = document.querySelectorAll(".fullscreen-capable");
 	fullscreenDivs.forEach((div) => {
@@ -75,47 +73,45 @@ document.addEventListener("DOMContentLoaded", (event) => {
 		const closeBtn = document.createElement("button");
 		closeBtn.innerHTML = "&times;"; // Unicode 'X' symbol
 		closeBtn.classList.add("close-btn");
+		closeBtn.style.display = "none"; // Hide close button initially
 
 		fullscreenBtn.addEventListener("click", function () {
 			if (screenfull.isEnabled) {
 				screenfull.request(this.parentElement);
 			}
+			fullscreenBtn.style.display = "none"; // Hide fullscreen button
+			closeBtn.style.display = "block"; // Show close button
 		});
 
 		closeBtn.addEventListener("click", function () {
 			if (screenfull.isEnabled) {
 				screenfull.exit();
 			}
+			fullscreenBtn.style.display = "block";
+			closeBtn.style.display = "none";
 		});
 
 		div.appendChild(fullscreenBtn);
 		div.appendChild(closeBtn);
 	});
 
-	// Add fullscreen change event listener
 	if (screenfull.isEnabled) {
 		screenfull.on("change", () => {
-			if (screenfull.isFullscreen) {
-				fullscreenElement = screenfull.element;
-				fullscreenElement.classList.add("fullscreen");
+			// Check if the fullscreen element is one of our divs
+			const fullscreenDiv = Array.from(fullscreenDivs).find(
+				(div) => div == screenfull.element
+			);
 
-				const closeBtn = fullscreenElement.querySelector(".close-btn");
-				closeBtn.style.display = "block";
-
-				if (window.screen.orientation) {
-					window.screen.orientation.lock("landscape");
-				}
+			if (fullscreenDiv) {
+				// Our div is in fullscreen mode, hide the fullscreen button and show the close button
+				fullscreenDiv.querySelector(".fullscreen-btn").style.display = "none";
+				fullscreenDiv.querySelector(".close-btn").style.display = "block";
 			} else {
-				if (fullscreenElement) {
-					fullscreenElement.classList.remove("fullscreen");
-
-					const closeBtn = fullscreenElement.querySelector(".close-btn");
-					closeBtn.style.display = "none";
-
-					if (window.screen.orientation) {
-						window.screen.orientation.unlock();
-					}
-				}
+				// None of our divs are in fullscreen mode, hide the close button and show the fullscreen button
+				fullscreenDivs.forEach((div) => {
+					div.querySelector(".fullscreen-btn").style.display = "block";
+					div.querySelector(".close-btn").style.display = "none";
+				});
 			}
 		});
 	}
