@@ -405,19 +405,42 @@
 }
 
 .featureGrid {
-  grid-area: 3/1/5/5;
+  grid-area: 2/1/5/5;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
+  gap: 2svh;
+  padding: 2svh;
 }
 
 .feature {
+  --shadow-color: 0deg 10% 52%;
   color: purple;
   font-size: 4vmin;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
+  background-color: beige;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0.4px -0.5px 0.6px hsl(var(--shadow-color)/0.62), 1.2px -1.2px 1.6px -1.3px hsl(var(--shadow-color)/0.52), 3.5px -3.7px 4.7px -2.5px hsl(var(--shadow-color)/0.41), 9.6px -10.1px 13px -3.8px hsl(var(--shadow-color)/0.3);
+  border-radius: 15px;
+}
+.feature .description {
+  z-index: 3;
+  opacity: 0;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  background-color: beige;
+  font-size: 3vmin;
+  height: 100%;
+}
+.feature .description:hover {
+  opacity: 1;
 }
 
 .label {
