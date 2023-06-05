@@ -21,106 +21,109 @@
 		></script>
 	</head>
 	<body>
-		<div id="mySidenav" class="sidenav">
-			<div class="menu-item">
-				<a class="main-item" id="contentHeader">Content</a>
-				<div id="navDropdown">
-					<a href="#">Start</a>
-					<a href="#/2">Confidentiality</a>
-					<a href="#/3">Executive Summary</a>
-					<a href="#/4">Property Overview</a>
-					<a href="#/5">Market Analysis</a>
-					<a href="#/6">Risk Analysis</a>
-					<a href="#/7">Financial Projections</a>
-					<a href="#/9">Our Team</a>
-				</div>
-			</div>
-			<hr />
-			<div class="menu-item">
-				<a class="main-item" onclick="toggleDropdown('bankDropdown')"
-					>Data Bank <i class="chevron fas fa-chevron-right"></i
-				></a>
-				<div id="bankDropdown" class="dropdown-content">
-					<div class="icon-grid">
-						<div class="icon-item">
-							<i class="fas fa-file-word" onclick="showPopup('wordPopup')"></i>
-							<div id="wordPopup" class="popup">
-								<div class="popup-content">
-									<a href="#" onclick="event.stopPropagation();">View</a>
-									<a href="#" onclick="event.stopPropagation();">Download</a>
-								</div>
-							</div>
-						</div>
-						<div class="icon-item">
-							<i
-								class="fas fa-file-excel"
-								onclick="showPopup('excelPopup')"
-							></i>
-							<div id="excelPopup" class="popup">
-								<div class="popup-content">
-									<a href="#" onclick="event.stopPropagation();">View</a>
-									<a href="#" onclick="event.stopPropagation();">Download</a>
-								</div>
-							</div>
-						</div>
-						<!-- Add two more items similar to the above -->
-						<div class="icon-item">
-							<i
-								class="fas fa-file-excel"
-								onclick="showPopup('excelPopup2')"
-							></i>
-							<div id="excelPopup2" class="popup">
-								<div class="popup-content">
-									<a href="#" onclick="event.stopPropagation();">View</a>
-									<a href="#" onclick="event.stopPropagation();">Download</a>
-								</div>
-							</div>
-						</div>
-						<div class="icon-item">
-							<i
-								class="fas fa-file-excel"
-								onclick="showPopup('excelPopup3')"
-							></i>
-							<div id="excelPopup3" class="popup">
-								<div class="popup-content">
-									<a href="#" onclick="event.stopPropagation();">View</a>
-									<a href="#" onclick="event.stopPropagation();">Download</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<hr />
-			<div class="menu-item">
-				<a class="main-item" onclick="toggleDropdown('disclaimerDropdown')"
-					>Disclaimer <i class="chevron fas fa-chevron-right"></i
-				></a>
-
-				<div id="disclaimerDropdown" class="dropdown-content">
-					<div class="disclaimerContainer">
-						<p>
-							This memorandum by ABC Realty presents a potential commercial real
-							estate investment opportunity and is provided for your
-							consideration. It is not an offer to sell or solicit an offer to
-							buy any security. The actual offer or solicitation will be made
-							through a confidential private offering memorandum that includes
-							important information and risk factors. The information in this
-							memorandum is based on reliable sources but neither ABC Realty nor
-							its affiliates make any representations or warranties regarding
-							its accuracy or completeness.
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="hamburger" onclick="toggleNav()">
-			<div></div>
-			<div></div>
-			<div></div>
-		</div>
 		<div class="reveal">
+			<div id="mySidenav" class="sidenav">
+				<div class="menu-item">
+					<a class="main-item" id="contentHeader">Content</a>
+					<div id="navDropdown">
+						<a onclick="closeNav()" href="#">Start</a>
+						<a onclick="closeNav()" href="#/2">Confidentiality</a>
+						<a onclick="closeNav()" href="#/3">Executive Summary</a>
+						<a onclick="closeNav()" href="#/4">Property Overview</a>
+						<a onclick="closeNav()" href="#/5">Market Analysis</a>
+						<a onclick="closeNav()" href="#/6">Risk Analysis</a>
+						<a onclick="closeNav()" href="#/7">Financial Projections</a>
+						<a onclick="closeNav()" href="#/9">Our Team</a>
+					</div>
+				</div>
+				<hr />
+				<div class="menu-item">
+					<a class="main-item" onclick="toggleDropdown('bankDropdown')"
+						>Data Bank <i class="chevron fas fa-chevron-right"></i
+					></a>
+					<div id="bankDropdown" class="dropdown-content">
+						<div class="icon-grid">
+							<div class="icon-item">
+								<i
+									class="fas fa-file-word"
+									onclick="showPopup('wordPopup')"
+								></i>
+								<div id="wordPopup" class="popup">
+									<div class="popup-content">
+										<a href="#" onclick="event.stopPropagation();">View</a>
+										<a href="#" onclick="event.stopPropagation();">Download</a>
+									</div>
+								</div>
+							</div>
+							<div class="icon-item">
+								<i
+									class="fas fa-file-excel"
+									onclick="showPopup('excelPopup')"
+								></i>
+								<div id="excelPopup" class="popup">
+									<div class="popup-content">
+										<a href="#" onclick="event.stopPropagation();">View</a>
+										<a href="#" onclick="event.stopPropagation();">Download</a>
+									</div>
+								</div>
+							</div>
+							<!-- Add two more items similar to the above -->
+							<div class="icon-item">
+								<i
+									class="fas fa-file-excel"
+									onclick="showPopup('excelPopup2')"
+								></i>
+								<div id="excelPopup2" class="popup">
+									<div class="popup-content">
+										<a href="#" onclick="event.stopPropagation();">View</a>
+										<a href="#" onclick="event.stopPropagation();">Download</a>
+									</div>
+								</div>
+							</div>
+							<div class="icon-item">
+								<i
+									class="fas fa-file-excel"
+									onclick="showPopup('excelPopup3')"
+								></i>
+								<div id="excelPopup3" class="popup">
+									<div class="popup-content">
+										<a href="#" onclick="event.stopPropagation();">View</a>
+										<a href="#" onclick="event.stopPropagation();">Download</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<hr />
+				<div class="menu-item">
+					<a class="main-item" onclick="toggleDropdown('disclaimerDropdown')"
+						>Disclaimer <i class="chevron fas fa-chevron-right"></i
+					></a>
+
+					<div id="disclaimerDropdown" class="dropdown-content">
+						<div class="disclaimerContainer">
+							<p>
+								This memorandum by ABC Realty presents a potential commercial
+								real estate investment opportunity and is provided for your
+								consideration. It is not an offer to sell or solicit an offer to
+								buy any security. The actual offer or solicitation will be made
+								through a confidential private offering memorandum that includes
+								important information and risk factors. The information in this
+								memorandum is based on reliable sources but neither ABC Realty
+								nor its affiliates make any representations or warranties
+								regarding its accuracy or completeness.
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hamburger" onclick="toggleNav()">
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
 			<div class="slides">
 				<section data-background-video="../../Bike.mp4">
 					<div class="titleGridContainer">
@@ -165,7 +168,7 @@
 							</table>
 						</div>
 
-						<div class="slideshowContainer">
+						<div class="slideshowContainer fullscreen-capable">
 							<div class="slideshow-container">
 								<div class="slide-wrapper">
 									<img
@@ -467,13 +470,64 @@
 						></iframe>
 					</div>
 				</section>
+				<section>
+					<div
+						style="
+							height: 300px;
+							width: 300px;
+							border: 5px solid black;
+							margin-left: 50svw;
+							margin-top: 50svh;
+							transform: translate(-50%, -50%);
+						"
+					>
+						<div style="display: flex; background-color: aquamarine">
+							<button id="10" onclick="openTab(1)" class="tablink">ONE</button>
+							<button id="20" onclick="openTab(2)" class="tablink">TWO</button>
+							<button id="30" onclick="openTab(3)" class="tablink">
+								THREE
+							</button>
+						</div>
+						<div id="1" class="tab" style="display: none">
+							<h2>ONE</h2>
+							<p>one one one</p>
+						</div>
+						<div id="2" class="tab" style="display: none">
+							<h2>TWO</h2>
+							<p>two two two</p>
+						</div>
+						<div id="3" class="tab" style="display: none">
+							<h2>THREE</h2>
+							<p>three three three</p>
+						</div>
+					</div>
+				</section>
 			</div>
 		</div>
 		<script src="../../dist/reveal.js"></script>
 
 		<script>
+			function openTab(id) {
+				let tab = document.getElementsByClassName("tab");
+				let tablink = document.getElementsByClassName("tablink");
+
+				let i;
+				for (i = 0; i < tab.length; i++) {
+					tab[i].style.display = "none";
+				}
+				for (i = 0; i < tablink.length; i++) {
+					tablink[i].style.color = "black";
+				}
+
+				document.getElementById(id).style.display = "block";
+				document.getElementById(id * 10).style.color = "red";
+			}
+		</script>
+		<script src="../../plugin/fsfx/fsfx.js"></script>
+		<script>
 			Reveal.initialize({
 				disableLayout: true,
+				plugins: [FsFx],
 			});
 		</script>
 
@@ -482,6 +536,8 @@
 			integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
 			crossorigin=""
 		></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"></script>
 
 		<script src="./main.js"></script>
 	</body>
