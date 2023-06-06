@@ -4,12 +4,19 @@
 		<link rel="stylesheet" href="../../dist/reveal.css" />
 		<link rel="stylesheet" href="../../dist/theme/white.css" />
 		<link rel="stylesheet" href="./style/main.css" />
+
 		<meta charset="UTF-8" />
 		<link
 			rel="stylesheet"
 			href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 			integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
 			crossorigin=""
+		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&family=Raleway&display=swap"
+			rel="stylesheet"
 		/>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -343,7 +350,7 @@
 						<div class="slideTitle">Business Plan</div>
 						<div class="businessPlan">
 							<h2>Sources & Uses</h2>
-							<table>
+							<table class="overviewTable">
 								<tr>
 									<th>Purchase Price</th>
 									<td>$100,000,000</td>
@@ -445,35 +452,154 @@
 						></iframe>
 					</div>
 				</section>
-				<section>
-					<div
-						style="
-							height: 300px;
-							width: 300px;
-							border: 5px solid black;
-							margin-left: 50svw;
-							margin-top: 50svh;
-							transform: translate(-50%, -50%);
-						"
-					>
-						<div style="display: flex; background-color: aquamarine">
-							<button id="10" onclick="openTab(1)" class="tablink">ONE</button>
-							<button id="20" onclick="openTab(2)" class="tablink">TWO</button>
-							<button id="30" onclick="openTab(3)" class="tablink">
-								THREE
-							</button>
-						</div>
-						<div id="1" class="tab" style="display: none">
-							<h2>ONE</h2>
-							<p>one one one</p>
-						</div>
-						<div id="2" class="tab" style="display: none">
-							<h2>TWO</h2>
-							<p>two two two</p>
-						</div>
-						<div id="3" class="tab" style="display: none">
-							<h2>THREE</h2>
-							<p>three three three</p>
+				<section data-state="rentalComp">
+					<div class="gridContainer">
+						<div class="slideTitle">Rental Comps</div>
+						<div class="compsContainer">
+							<div class="tabsContainer">
+								<div class="compMain">
+									<div class="tabs">
+										<div class="tablink" style="opacity: 0">Comp x</div>
+										<div class="tablink" style="opacity: 0">Comp x</div>
+										<div class="tablink" style="opacity: 0">Comp x</div>
+										<div class="tablink" style="opacity: 0">Comp x</div>
+									</div>
+
+									<img
+										src="https://th.bing.com/th?id=OIP.K2XHZApjhJtr7KaMROuZiQHaE7&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2"
+										class="tab-img"
+										width="100%"
+									/>
+									<div class="compInfo">
+										<h3>The Isles at Ridgepoint</h3>
+										<p>
+											2.1 miles away<br />
+											269 Units<br />
+											Built: 1991<br />
+											Renovated: 2022
+										</p>
+									</div>
+
+									<table>
+										<tr>
+											<th>Unit Type</th>
+											<th>Av. Size</th>
+											<th>Av. Rent</th>
+											<th>Rent PSF</th>
+										</tr>
+										<tr>
+											<td>Studio</td>
+											<td>400sf</td>
+											<td>$800</td>
+											<td>$1.50</td>
+										</tr>
+										<tr>
+											<td>1Bd/1Br</td>
+											<td>720sf</td>
+											<td>$1400</td>
+											<td>$1.85</td>
+										</tr>
+										<tr>
+											<td>1Bd/2Br</td>
+											<td>730sf</td>
+											<td>$1700</td>
+											<td>$2.12</td>
+										</tr>
+										<tr>
+											<td>2Bd/2Br</td>
+											<td>750sf</td>
+											<td>$2000</td>
+											<td>$2.45</td>
+										</tr>
+										<tr>
+											<td>3Bd/3Br</td>
+											<td>800sf</td>
+											<td>$2200</td>
+											<td>$2.81</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							<div class="tabsContainer">
+								<div class="tabs">
+									<div id="tablink1" class="tablink" onclick="openTab(1)">
+										Comp 1
+									</div>
+									<div id="tablink2" class="tablink" onclick="openTab(2)">
+										Comp 2
+									</div>
+									<div id="tablink3" class="tablink" onclick="openTab(3)">
+										Comp 3
+									</div>
+									<div id="tablink4" class="tablink" onclick="openTab(4)">
+										Comp 4
+									</div>
+								</div>
+								<div id="1" class="tab">
+									<img
+										src="https://th.bing.com/th?id=OIP.K2XHZApjhJtr7KaMROuZiQHaE7&w=306&h=204&c=8&rs=1&qlt=90&o=6&dpr=2&pid=3.1&rm=2"
+										class="tab-img"
+										width="100%"
+									/>
+									<div class="compInfo">
+										<h3>The Isles at Ridgepoint</h3>
+										<p>
+											2.1 miles away<br />
+											269 Units<br />
+											Built: 1991<br />
+											Renovated: 2022
+										</p>
+									</div>
+
+									<table>
+										<tr>
+											<th>Unit Type</th>
+											<th>Av. Size</th>
+											<th>Av. Rent</th>
+											<th>Rent PSF</th>
+										</tr>
+										<tr>
+											<td>Studio</td>
+											<td>400sf</td>
+											<td>$800</td>
+											<td>$1.50</td>
+										</tr>
+										<tr>
+											<td>1Bd/1Br</td>
+											<td>720sf</td>
+											<td>$1400</td>
+											<td>$1.85</td>
+										</tr>
+										<tr>
+											<td>1Bd/2Br</td>
+											<td>730sf</td>
+											<td>$1700</td>
+											<td>$2.12</td>
+										</tr>
+										<tr>
+											<td>2Bd/2Br</td>
+											<td>750sf</td>
+											<td>$2000</td>
+											<td>$2.45</td>
+										</tr>
+										<tr>
+											<td>3Bd/3Br</td>
+											<td>800sf</td>
+											<td>$2200</td>
+											<td>$2.81</td>
+										</tr>
+									</table>
+								</div>
+								<div id="2" class="tab">
+									<h2>TWO</h2>
+									<p>two two two</p>
+								</div>
+								<div id="3" class="tab">
+									<h2>THREE</h2>
+									<p>three three three</p>
+								</div>
+							</div>
+							<div id="map2" style="width: 100px; height: 100px"></div>
 						</div>
 					</div>
 				</section>
@@ -481,23 +607,6 @@
 		</div>
 		<script src="../../dist/reveal.js"></script>
 
-		<script>
-			function openTab(id) {
-				let tab = document.getElementsByClassName("tab");
-				let tablink = document.getElementsByClassName("tablink");
-
-				let i;
-				for (i = 0; i < tab.length; i++) {
-					tab[i].style.display = "none";
-				}
-				for (i = 0; i < tablink.length; i++) {
-					tablink[i].style.color = "black";
-				}
-
-				document.getElementById(id).style.display = "block";
-				document.getElementById(id * 10).style.color = "red";
-			}
-		</script>
 		<script src="../../plugin/fsfx/fsfx.js"></script>
 		<script>
 			Reveal.initialize({
@@ -524,5 +633,8 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/screenfull.js/5.1.0/screenfull.min.js"></script>
 
 		<script src="./main.js"></script>
+		<script>
+			Reveal.addEventListener("stats", openTab(1));
+		</script>
 	</body>
 </html>

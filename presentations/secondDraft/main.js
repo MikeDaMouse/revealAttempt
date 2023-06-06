@@ -195,6 +195,7 @@ document.addEventListener("click", function (e) {
 	}
 });
 
+//maps
 var map = L.map("map").setView([51.505, -0.09], 13);
 
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -202,3 +203,27 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	attribution:
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
+
+var map2 = L.map("map2").setView([40.7128, -74.006], 13); // different center for this map
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	maxZoom: 19,
+	attribution:
+		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map2);
+
+//Tabs
+function openTab(id) {
+	let tab = document.getElementsByClassName("tab");
+	let tablink = document.getElementsByClassName("tablink");
+
+	for (let i = 0; i < tab.length; i++) {
+		tab[i].classList.remove("open");
+	}
+
+	for (let i = 0; i < tablink.length; i++) {
+		tablink[i].classList.remove("active");
+	}
+
+	document.getElementById(id).classList.add("open");
+	document.getElementById("tablink" + id).classList.add("active");
+}

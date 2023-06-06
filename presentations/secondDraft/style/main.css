@@ -1,5 +1,8 @@
 * {
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .gridContainer {
@@ -12,7 +15,7 @@
   overflow: hidden;
   margin: auto;
   margin-top: 3svh;
-  gap: 2%;
+  gap: 1%;
 }
 
 .title {
@@ -36,7 +39,7 @@
 }
 
 .tiles {
-  background-color: whitesmoke;
+  background-color: white;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .tiles:nth-child(1) {
@@ -84,17 +87,24 @@
 #overviewInfo {
   grid-column: 1/3;
   grid-row: 2/3;
-  justify-self: center;
-  align-self: start;
+  width: 100%;
 }
 #overviewInfo .overviewTable {
-  /* border: none; */
   width: 100%;
+  height: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
   font-size: 1rem;
 }
-#overviewInfo .overviewTable th,
-#overviewInfo .overviewTable td {
-  border: none;
+#overviewInfo .overviewTable tr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+#overviewInfo .overviewTable tr:hover {
+  background-color: beige;
 }
 
 .hamburger {
@@ -400,9 +410,6 @@
   width: 100%;
   border-radius: 15px;
 }
-.streetView #map {
-  border-radius: 15px;
-}
 
 .featureGrid {
   grid-area: 2/1/5/5;
@@ -413,7 +420,6 @@
 }
 
 .feature {
-  --shadow-color: 0deg 10% 52%;
   color: purple;
   font-size: 4vmin;
   cursor: pointer;
@@ -425,8 +431,8 @@
   background-color: beige;
   position: relative;
   overflow: hidden;
-  box-shadow: 0.4px -0.5px 0.6px hsl(var(--shadow-color)/0.62), 1.2px -1.2px 1.6px -1.3px hsl(var(--shadow-color)/0.52), 3.5px -3.7px 4.7px -2.5px hsl(var(--shadow-color)/0.41), 9.6px -10.1px 13px -3.8px hsl(var(--shadow-color)/0.3);
-  border-radius: 15px;
+  /* box-shadow: $boxShadow;
+  border-radius: 15px; */
 }
 .feature .description {
   z-index: 3;
@@ -496,6 +502,12 @@
   grid-area: 2/3/5/5;
 }
 
+.businessPlan {
+  overflow-y: scroll;
+  grid-row: 2/5;
+  position: relative;
+  grid-column: 1/3;
+}
 .businessPlan table {
   width: 100%;
   border-collapse: collapse;
@@ -523,6 +535,97 @@
 
 #businessPlanSlides {
   grid-area: 2/3/5/5;
+}
+
+.compsContainer {
+  grid-column: 1/-1;
+  grid-row: 2/5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: end;
+}
+
+.tabsContainer {
+  align-items: end;
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.tabs {
+  display: flex;
+}
+
+.compInfo p {
+  text-align: start;
+}
+
+.tablink {
+  padding: 10px;
+  border: none;
+  border-right: 2px solid hsla(60, 56%, 91%, 0.5);
+  background: none;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 1.3rem;
+}
+
+.tablink.active {
+  background-color: beige;
+}
+
+.tab {
+  display: none;
+}
+
+.tab.open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+}
+.tab.open table {
+  width: 100%;
+  height: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  font-size: 1rem;
+}
+.tab.open table tr {
+  width: 100%;
+}
+.tab.open table tr:not(:first-child):hover {
+  background-color: beige;
+}
+.tab.open table tr td,
+.tab.open table tr th {
+  text-align: start;
+}
+
+.compMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-height: 100%;
+  border-right: 2px solid hsla(0, 0%, 50%, 0.4);
+}
+.compMain table {
+  width: 100%;
+  height: 100%;
+  padding-left: 3%;
+  padding-right: 3%;
+  font-size: 1rem;
+}
+.compMain table tr {
+  width: 100%;
+}
+.compMain table tr:not(:first-child):hover {
+  background-color: beige;
+}
+.compMain table tr td,
+.compMain table tr th {
+  text-align: start;
 }
 
 @media screen and (max-width: 800px) and (min-width: 480px) {
