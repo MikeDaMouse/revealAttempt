@@ -117,6 +117,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	}
 });
 
+var map = L.map("map").setView([51.505, -0.09], 13);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	maxZoom: 19,
+	attribution:
+		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map);
 //SLIDESHOW
 var slideshowContainers = Array.from(
 	document.querySelectorAll(".slideshowContainer")
@@ -194,22 +201,6 @@ document.addEventListener("click", function (e) {
 		});
 	}
 });
-
-//maps
-var map = L.map("map").setView([51.505, -0.09], 13);
-
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-	maxZoom: 19,
-	attribution:
-		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map);
-
-var map2 = L.map("map2").setView([40.7128, -74.006], 13); // different center for this map
-L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-	maxZoom: 19,
-	attribution:
-		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-}).addTo(map2);
 
 //Tabs
 function openTab(id) {

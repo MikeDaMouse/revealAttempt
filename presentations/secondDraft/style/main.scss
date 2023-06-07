@@ -290,8 +290,8 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 
 .fullscreen-btn {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 3%;
+	right: 4%;
 	background: transparent;
 	border: none;
 	font-size: 20px;
@@ -304,8 +304,8 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 
 .close-btn {
 	position: absolute;
-	top: 5%;
-	right: 5%;
+	top: 3%;
+	right: 4%;
 	background: transparent;
 	border: none;
 	font-size: 2rem;
@@ -345,7 +345,7 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	scrollbar-width: none;
 	height: 100%;
 	width: 100%;
-
+	border-radius: 15px;
 	transition: opacity 0.5s ease;
 
 	scrollbar-width: none;
@@ -494,6 +494,10 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 
 #marketAnalysisSlides {
 	grid-area: 2/3/5/5;
+}
+#map {
+	height: 100%;
+	width: 100%;
 }
 .businessPlan {
 	overflow-y: scroll;
@@ -714,5 +718,13 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 		grid-area: 3/1/5/2;
 		align-self: start;
 		align-self: stretch;
+	}
+	.compsContainer {
+		grid-template-columns: 1;
+		overflow-y: scroll;
+		* {
+			grid-column: 1;
+			border: none;
+		}
 	}
 }
