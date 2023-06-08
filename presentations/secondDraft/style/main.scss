@@ -22,6 +22,26 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	margin-top: 3svh;
 	gap: 1%;
 }
+
+table {
+	width: 100%;
+	height: 100%;
+	padding-left: 3%;
+	padding-right: 3%;
+	font-size: 1rem;
+
+	tr {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		padding-top: 1%;
+		padding-bottom: 1%;
+
+		&:hover {
+			background-color: beige;
+		}
+	}
+}
 .title {
 	display: flex;
 	justify-content: center;
@@ -88,26 +108,6 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	grid-column: 1/3;
 	grid-row: 2/3;
 	width: 100%;
-
-	.overviewTable {
-		width: 100%;
-		height: 100%;
-		padding-left: 3%;
-		padding-right: 3%;
-		font-size: 1rem;
-
-		tr {
-			width: 100%;
-			display: flex;
-			justify-content: space-between;
-			padding-top: 1%;
-			padding-bottom: 1%;
-
-			&:hover {
-				background-color: beige;
-			}
-		}
-	}
 }
 .hamburger {
 	margin-top: 2.5svh;
@@ -327,12 +327,13 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 }
 
 //SLIDESHOW
+#slideshow {
+	grid-area: 3/1/5/3;
+}
 .slideshowContainer {
 	position: relative;
-	/* 	background-color: hsl(0, 0%, 0%, 0.1); */
 	border-radius: 15px;
 
-	grid-area: 3/1/5/3;
 	overflow: hidden;
 }
 .slideshow-container {
@@ -347,8 +348,6 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	width: 100%;
 	border-radius: 15px;
 	transition: opacity 0.5s ease;
-
-	scrollbar-width: none;
 }
 .slideshow-container::-webkit-scrollbar {
 	display: none;
@@ -431,6 +430,7 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	.description {
 		z-index: 3;
 		opacity: 0;
+
 		position: absolute;
 		display: flex;
 		align-items: center;
@@ -499,40 +499,19 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	height: 100%;
 	width: 100%;
 }
+#map2 {
+	height: 100%;
+	width: 100%;
+}
+#map3 {
+	height: 100%;
+	width: 100%;
+}
 .businessPlan {
-	overflow-y: scroll;
+	/* overflow-y: scroll; */
 	grid-row: 2/5;
 	position: relative;
 	grid-column: 1/3;
-
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		margin-bottom: 2em;
-		font-size: 1rem;
-	}
-
-	h2 {
-		background-color: #ffdab9; /* Dark Peach */
-		padding: 15px;
-		color: black;
-		text-align: left;
-		font-size: 1.5rem;
-	}
-
-	td,
-	th {
-		padding: 15px;
-		text-align: left;
-	}
-
-	tr:nth-child(even) {
-		background-color: #ffefd5; /* Light Peach */
-	}
-
-	tr:nth-child(odd) {
-		background-color: #ffffff; /* White */
-	}
 }
 #businessPlanSlides {
 	grid-area: 2/3/5/5;
@@ -543,6 +522,10 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	align-items: end;
+	background-image: linear-gradient(
+		hsl(60, 56%, 91%, 0.4),
+		hsl(60, 56%, 91%, 0)
+	);
 }
 .tabsContainer {
 	align-items: end;
@@ -550,8 +533,15 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	flex-direction: column;
 	font-size: 1rem;
 }
+.mainCompContainer {
+	align-items: end;
+	display: flex;
+	flex-direction: column;
+	font-size: 1rem;
+}
 .tabs {
 	display: flex;
+	width: 100%;
 }
 .compInfo {
 	p {
@@ -568,18 +558,31 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	transition: background-color 0.3s;
 	font-size: 1.3rem;
 }
+.invisibleTablink {
+	padding: 10px;
+	border: none;
+	border-right: 2px solid hsl(60, 56%, 91%, 0.5);
+	background: none;
+	outline: none;
+
+	transition: background-color 0.3s;
+	font-size: 1.3rem;
+}
 
 .tablink.active {
-	background-color: beige;
+	background-color: hsl(60, 56%, 91%, 0.5);
 }
 .tab {
 	display: none;
+	background-color: hsl(60, 56%, 91%, 0.5);
+	width: 100%;
 }
 .tab.open {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	max-height: 100%;
+	background-color: hsl(60, 56%, 91%, 0.5);
 	table {
 		width: 100%;
 		height: 100%;
@@ -628,6 +631,38 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 		}
 	}
 }
+.salesContainer {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	position: relative;
+	h3 {
+		text-align: left;
+	}
+
+	img {
+		justify-self: start;
+	}
+	td {
+		justify-self: end;
+		text-align: right;
+	}
+}
+#salesComp {
+	grid-area: 2/1/3/5;
+	justify-self: stretch;
+	justify-self: start;
+	align-self: stretch;
+	width: 100%;
+	height: 100%;
+}
+#map3 {
+	grid-area: 3/1/5/5;
+}
+.overflow {
+	grid-column: 1/-1;
+}
 @media screen and (max-width: 800px) and (min-width: 480px) {
 	.gridContainer {
 		display: grid;
@@ -644,7 +679,7 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 			grid-row: 2/3;
 			grid-column: 1/3;
 		}
-		.slideshowContainer {
+		#slideShow {
 			grid-row: 3/4;
 			grid-column: 2/3;
 		}
@@ -657,16 +692,23 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 		font-size: 0.7rem;
 		width: 30vmin;
 	}
+	.compsContainer {
+		grid-template-columns: 2;
+		grid-template-rows: auto auto auto;
+		overflow-y: scroll;
+
+		#map2 {
+			grid-row: 3;
+			grid-column: 1/3;
+			min-height: 50vmin;
+		}
+	}
 }
 
 @media screen and (max-width: 480px) {
 	.gridContainer {
 		display: grid;
 		grid-template-columns: 1fr;
-		/* margin-top: 1.8svh;
-		margin-bottom: 4.2svh;
-		margin-left: 1.8svw;
-		margin-right: 4.2sw; */
 		justify-content: center;
 	}
 	.title {
@@ -677,7 +719,7 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 		grid-column: 1;
 	}
 	#overviewInfo,
-	.slideshowContainer,
+	#slideShow,
 	.streetView {
 		grid-column: 1;
 		grid-row: auto;
@@ -695,19 +737,23 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 	}
 	.featureGrid {
 		grid-template-columns: repeat(2, 1fr);
+		grid-column: 1;
 	}
 	.dialog {
 		font-size: 0.7rem;
 		width: 30vmin;
 	}
-	.info {
-		grid-column: 1/2;
-		grid-row: 2/3;
+	.infoContainer {
+		.info {
+			grid-column: 1;
+			grid-row: 2;
+		}
 	}
 	#marketAnalysisSlides {
-		grid-area: 3/1/5/2;
-		align-self: start;
+		grid-column: 1;
+		grid-row: 3/5;
 		align-self: stretch;
+		height: 100%;
 	}
 
 	.businessPlan {
@@ -715,16 +761,42 @@ $boxShadow: 0.4px -0.5px 0.6px hsl(0deg 10% 52% / 0.62),
 		overflow-y: scroll;
 	}
 	#businessPlanSlides {
-		grid-area: 3/1/5/2;
-		align-self: start;
+		grid-column: 1;
+		grid-row: 3/5;
 		align-self: stretch;
+		height: 100%;
 	}
 	.compsContainer {
 		grid-template-columns: 1;
+		grid-template-rows: auto auto auto;
 		overflow-y: scroll;
 		* {
 			grid-column: 1;
 			border: none;
 		}
+		#map2 {
+			grid-row: 3;
+			min-height: 50vmin;
+		}
+	}
+	.overflow {
+		grid-row: 2/5;
+		overflow-y: scroll;
+	}
+	#salesComp {
+		grid-column: 1;
+		* {
+			grid-column: 1;
+		}
+
+		.salesContainer {
+			grid-template-columns: 1fr;
+			grid-row: 2/4;
+		}
+	}
+	#map3 {
+		grid-row: 4/5;
+		grid-column: 1;
+		max-height: 50vmin;
 	}
 }

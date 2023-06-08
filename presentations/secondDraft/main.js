@@ -124,6 +124,22 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 	attribution:
 		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 }).addTo(map);
+
+var map2 = L.map("map2").setView([51.699, -0.01], 12);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	maxZoom: 19,
+	attribution:
+		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map2);
+
+var map3 = L.map("map3").setView([51.699, -0.01], 12);
+
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+	maxZoom: 19,
+	attribution:
+		'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+}).addTo(map3);
 //SLIDESHOW
 var slideshowContainers = Array.from(
 	document.querySelectorAll(".slideshowContainer")
@@ -203,18 +219,19 @@ document.addEventListener("click", function (e) {
 });
 
 //Tabs
-function openTab(id) {
-	let tab = document.getElementsByClassName("tab");
-	let tablink = document.getElementsByClassName("tablink");
 
-	for (let i = 0; i < tab.length; i++) {
-		tab[i].classList.remove("open");
+/* function openTab(tabId, clickedLink) {
+	let tabs = document.getElementsByClassName("tab");
+	let tablinks = document.getElementsByClassName("tablink");
+
+	for (let i = 0; i < tabs.length; i++) {
+		tabs[i].classList.remove("open");
 	}
 
-	for (let i = 0; i < tablink.length; i++) {
-		tablink[i].classList.remove("active");
+	for (let i = 0; i < tablinks.length; i++) {
+		tablinks[i].classList.remove("active");
 	}
 
-	document.getElementById(id).classList.add("open");
-	document.getElementById("tablink" + id).classList.add("active");
-}
+	document.getElementById(tabId).classList.add("open");
+	clickedLink.classList.add("active");
+} */
